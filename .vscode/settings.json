@@ -9,6 +9,5 @@
         "**/*.log": true,
         "**/bin/": true,
         "**/obj/": true,
-        "**/*.sln": true
     }
 }

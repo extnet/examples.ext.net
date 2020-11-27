@@ -6,9 +6,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/Ext.NET.Examples/bin/Debug/netcoreapp3.1/Ext.NET.Examples.dll",
+            "program": "${workspaceFolder}/src/bin/Debug/netcoreapp3.1/Ext.Net.Examples.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/Ext.NET.Examples",
+            "cwd": "${workspaceFolder}/src",
             "stopAtEntry": false,
             "serverReadyAction": {
                 "action": "openExternally",

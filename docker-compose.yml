@@ -5,4 +5,4 @@ services:
     image: ${DOCKER_REGISTRY-}extnetexamples
     build:
       context: .
-      dockerfile: Ext.NET.Examples/Dockerfile
+      dockerfile: src/Dockerfile

@@ -11,7 +11,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Ext.NET.Examples/Ext.NET.Examples.csproj",
+                "${workspaceFolder}/src/Ext.Net.Examples.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -23,7 +23,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/Ext.NET.Examples/Ext.NET.Examples.csproj",
+                "${workspaceFolder}/src/Ext.Net.Examples.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -36,7 +36,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/Ext.NET.Examples/Ext.NET.Examples.csproj",
+                "${workspaceFolder}/src/Ext.Net.Examples.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

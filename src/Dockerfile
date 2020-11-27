@@ -11,17 +11,17 @@ COPY NugetFeed ./
 COPY ./NugetFeed/NuGet.Config /root/.nuget/NuGet/NuGet.Config
 
 WORKDIR /app/publish/Pages
-COPY Ext.NET.Examples/Pages ./
+COPY src/Pages ./
 
 WORKDIR /src
-COPY ["Ext.NET.Examples/Ext.NET.Examples.csproj", "Ext.NET.Examples/"]
-RUN dotnet restore "Ext.NET.Examples/Ext.NET.Examples.csproj"
+COPY ["src/Ext.Net.Examples.csproj", "src/"]
+RUN dotnet restore "src/Ext.Net.Examples.csproj"
 COPY . .
-WORKDIR "/src/Ext.NET.Examples"
-RUN dotnet build "Ext.NET.Examples.csproj" -c Release -o /app/build
+WORKDIR "/src/Ext.Net.Examples"
+RUN dotnet build "Ext.Net.Examples.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Ext.NET.Examples.csproj" -c Release -o /app/publish
+RUN dotnet publish "Ext.Net.Examples.csproj" -c Release -o /app/publish
 
 WORKDIR /app/publish
 RUN find . \( -name "Ext.Net.*.Debug.dll" -o -name "Ext.Net.*.Rtl.*.dll" \) -exec truncate -s 0 {} \;
@@ -29,4 +29,4 @@ RUN find . \( -name "Ext.Net.*.Debug.dll" -o -name "Ext.Net.*.Rtl.*.dll" \) -exe
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Ext.NET.Examples.dll"]
+ENTRYPOINT ["dotnet", "Ext.Net.Examples.dll"]
