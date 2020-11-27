@@ -1,0 +1,46 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.layout.accordion.basic_in_markup.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            AccordionLayout in Markup - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>
+            Accordion Layout in Markup
+        </h1>
+        <ext-window
+            title="Accordion"
+            width="360"
+            height="600"
+            autoShow="true"
+            maximizable="true"
+            layout="Accordion">
+            <tbar>
+                <ext-toolbar>
+                    <items>
+                        <ext-button iconCls="x-md md-icon-add-circle-outline">
+                            <tooltip>
+                                <ext-quickTip title="Rich ToolTips" text="Let your users know what they can do!" />
+                            </tooltip>
+                        </ext-button>
+                        <ext-button iconCls="x-md md-icon-person-add" />
+                        <ext-button iconCls="x-md md-icon-person-remove" />
+                    </items>
+                </ext-toolbar>
+            </tbar>
+            <items>
+                <ext-panel title="Users" />
+                <ext-panel title="Settings" />
+                <ext-panel title="Security" />
+                <ext-panel title="Documents" />
+            </items>
+        </ext-window>
+    </body>
+</html>

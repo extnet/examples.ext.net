@@ -1,0 +1,132 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.tabpanel.basic.show_hide.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Show and Hide Tabs - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>
+            Show and Hide Tabs
+        </h1>
+        <ext-tabPanel
+            id="TabPanel1"
+            width="960"
+            height="480"
+            frame="true">
+            <defaults>
+                <ext-add key="bodyPadding" value="18" mode="Raw" />
+            </defaults>
+            <items>
+                <ext-panel
+                    id="Tab1"
+                    title="Tab1"
+                    closable="true"
+                    closeAction="hide"
+                    html="Tab1">
+                    <listeners>
+                        <close handler="App.ShowTab1.setDisabled(false);App.CloseTab1.setDisabled(true);" />
+                    </listeners>
+                </ext-panel>
+                <ext-panel
+                    id="Tab2"
+                    title="Tab2"
+                    closable="true"
+                    closeAction="hide"
+                    html="Tab2">
+                    <listeners>
+                        <close handler="App.ShowTab2.setDisabled(false);" />
+                    </listeners>
+                </ext-panel>
+                <ext-panel
+                    id="Tab3"
+                    title="Tab3"
+                    closable="true"
+                    closeAction="hide"
+                    html="Tab3">
+                    <listeners>
+                        <close handler="App.ShowTab3.setDisabled(false);" />
+                    </listeners>
+                </ext-panel>
+                <ext-panel
+                    id="Tab4"
+                    title="Tab4"
+                    closable="true"
+                    closeAction="hide"
+                    html="Tab4">
+                    <listeners>
+                        <close handler="App.ShowTab4.setDisabled(false);" />
+                    </listeners>
+                </ext-panel>
+                <ext-panel
+                    id="Tab5"
+                    title="Tab5 - Close Event"
+                    closable="true"
+                    closeAction="destroy">
+                    <content>
+                        Tab5 with CloseAction='Close' (after closing the tab can't be reshow)
+                    </content>
+                    <listeners>
+                        <close handler="Ext.toast('Tab5 has been closed');" />
+                    </listeners>
+                </ext-panel>
+            </items>
+            <bin>
+                <ext-panel
+                    id="Tab6"
+                    title="Tab6"
+                    closable="true"
+                    closeAction="hide"
+                    hidden="true"
+                    html="PreHidden Tab6">
+                    <listeners>
+                        <close handler="App.ShowTab6.setDisabled(false);" />
+                    </listeners>
+                </ext-panel>
+            </bin>
+            <bbar>
+                <ext-toolbar>
+                    <items>
+                        <ext-button id="CloseTab1" text="Close Tab1">
+                            <listeners>
+                                <click handler="App.TabPanel1.closeTab(App.Tab1);this.setDisabled(true);App.ShowTab1.setDisabled(false);" />
+                            </listeners>
+                        </ext-button>
+                        <ext-toolbarFill />
+                        <ext-button id="ShowTab1" text="Show Tab1" disabled="true">
+                            <listeners>
+                                <click handler="App.TabPanel1.addTab(App.Tab1);this.setDisabled(true);App.CloseTab1.setDisabled(false);" />
+                            </listeners>
+                        </ext-button>
+                        <ext-button id="ShowTab2" text="Show Tab2" disabled="true">
+                            <listeners>
+                                <click handler="App.TabPanel1.addTab(App.Tab2);this.setDisabled(true);" />
+                            </listeners>
+                        </ext-button>
+                        <ext-button id="ShowTab3" text="Show Tab3 at begin" disabled="true">
+                            <listeners>
+                                <click handler="App.TabPanel1.addTab(App.Tab3, 0);this.setDisabled(true);" />
+                            </listeners>
+                        </ext-button>
+                        <ext-button id="ShowTab4" text="Show Tab4 without activate" disabled="true">
+                            <listeners>
+                                <click handler="App.TabPanel1.addTab(App.Tab4, false);this.setDisabled(true);" />
+                            </listeners>
+                        </ext-button>
+                        <ext-button id="ShowTab6" text="Show Tab6">
+                            <listeners>
+                                <click handler="App.TabPanel1.addTab(App.TabPanel1.bin[0]);this.setDisabled(true);" />
+                            </listeners>
+                        </ext-button>
+                    </items>
+                </ext-toolbar>
+            </bbar>
+        </ext-tabPanel>
+    </body>
+</html>

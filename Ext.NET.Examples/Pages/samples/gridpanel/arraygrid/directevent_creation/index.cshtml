@@ -1,0 +1,47 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.gridpanel.arraygrid.directevent_creation.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Dynamic GridPanel creation during DirectEvent - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+        <script>
+            var template = '<span style="color:{0};">{1}</span>';
+
+            var change = function (value) {
+                return Ext.String.format(template, (value > 0) ? "green" : "red", value);
+            };
+
+            var pctChange = function (value) {
+                return Ext.String.format(template, (value > 0) ? "green" : "red", value + "%");
+            };
+        </script>
+    </head>
+    <body>
+        <h1>
+            Dynamic GridPanel creation during DirectEvent
+        </h1>
+
+        <ext-button
+            text="Add GridPanel"
+            iconCls="x-md md-icon-add-circle-outline"
+            onDirectClick="Button1_Click"
+            marginAsString = "0 0 20 0">
+            <directEvents>
+                <click pageHandler="Button1_Click">
+                    <extraParams>
+                        <ext-add key="button" value="this" mode="Raw" />
+                        <ext-add key="gridId" value="grid1" />
+                    </extraParams>
+                </click>
+            </directEvents>
+        </ext-button>
+
+        <div id="grid1" />
+    </body>
+</html>

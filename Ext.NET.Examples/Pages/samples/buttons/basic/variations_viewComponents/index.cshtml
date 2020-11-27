@@ -1,0 +1,42 @@
+@page "{handler?}"
+
+@using Ext.Net.Examples.Pages.samples.buttons.basic.variations_viewComponents
+
+@model IndexModel
+@addTagHelper *, Ext.NET.Examples
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Button Variations - Ext.NET Classic Examples</title>
+    <link rel="stylesheet" type="text/css" href="/resources/css/examples.css" />
+    <style>
+        .x-btn {
+            margin-right: 10px;
+        }
+
+        .floater {
+            float: left;
+        }
+    </style>
+
+</head>
+<body>
+    <div>
+        <vc:button-variations />
+
+        @*
+            Alternatively, the same component drawing could be achieved via:
+            @(await Component.InvokeAsync<ButtonVariations>())
+            or:
+            @(await Component.InvokeAsync("ButtonVariations"))
+        *@
+    </div>
+</body>
+</html>

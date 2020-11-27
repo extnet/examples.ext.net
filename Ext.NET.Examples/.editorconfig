@@ -1,0 +1,16 @@
+root = true
+
+[*]
+end_of_line = lf
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{config,json,xml}]
+indent_size = 2
+
+[*.{cshtml,html,cs,js,css}]
+charset = utf-8
+
+indent_size = 4
+

@@ -1,0 +1,25 @@
+﻿@using Ext.Net.Examples.Pages.samples.buttons.basic.variations_viewComponents
+
+@addTagHelper Ext.Net.TagHelpers.*, Ext.Net
+@addTagHelper Ext.Net.TagHelpers.*, Ext.Net.Common
+
+@model IEnumerable<ButtonSample>
+
+@foreach (var sample in Model)
+{
+    <h2>@sample.Title</h2>
+
+    @foreach (var btnSection in sample.Sections)
+    {
+        <h4>@btnSection.Name</h4>
+
+        <div>
+            @foreach (var btn in btnSection.Buttons)
+            {
+                <ext-button model="btn" />
+            }
+
+            <div style="clear: both;"></div>
+        </div>
+    }
+}

@@ -1,0 +1,58 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.layout.formlayout.field_options.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            FormLayout Overview - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+        <style>
+            .yellowBg {
+                background-color : yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <ext-panel
+            frame="true"
+            title="Label Style and Separator"
+            width="400"
+            layout="Form"
+            marginAsString="0 0 20 0">
+            <items>
+                <ext-textField fieldLabel="Label" labelStyle="color:red;" />
+                <ext-textField fieldLabel="Label" labelStyle="color:blue;" labelSeparator="-" />
+            </items>
+        </ext-panel>
+
+        <ext-panel
+            id="Panel1"
+            frame="true"
+            title="Without labels"
+            width="400"
+            layout="Form"
+            marginAsString="0 0 20 0">
+            <items>
+                <ext-textField fieldLabel="Label" hideLabel="true" />
+                <ext-textField fieldLabel="Label" hideLabel="true" />
+            </items>
+        </ext-panel>
+
+        <ext-panel
+            id="Panel2"
+            frame="true"
+            title="Item style"
+            width="400"
+            layout="Form"
+            marginAsString="0 0 20 0">
+            <items>
+                <ext-textField fieldLabel="Label" cls="yellowBg" />
+                <ext-textField fieldLabel="Label" cls="yellowBg" />
+            </items>
+        </ext-panel>
+    </body>
+</html>

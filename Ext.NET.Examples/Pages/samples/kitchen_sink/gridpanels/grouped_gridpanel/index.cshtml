@@ -1,0 +1,184 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.kitchen_sink.gridpanels.grouped_gridpanel.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Grouped GridPanel - Ext.NET Examples</title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+        <script>
+            var onToggleButtonBeforeRender = function (item) {
+                item.up("gridpanel").getStore().getGroups().each(function(group) {
+                    item.menu.add({
+                        xtype: "menucheckitem",
+                        text: group.getGroupKey(),
+                        handler: toggleGroup
+                    });
+                });
+            };
+            var onClearGroupingClick = function (item) {
+                var grid = item.up("gridpanel"),
+                    groupingFeature = grid.groupingFeature,
+                    store = grid.getStore(),
+                    currentGroupedHeader;
+
+                if (store.isGrouped()) {
+                    currentGroupedHeader = groupingFeature.hideGroupedHeader && groupingFeature.getGroupedHeader();
+                    store.clearGrouping();
+
+                    if (currentGroupedHeader) {
+                        currentGroupedHeader.show();
+                    }
+                } else {
+                    store.group(groupingFeature.lastGrouper);
+                    groupingFeature.collapseAll();
+                    currentGroupedHeader = groupingFeature.hideGroupedHeader && groupingFeature.getGroupedHeader();
+
+                    if (currentGroupedHeader) {
+                        currentGroupedHeader.hide();
+                    }
+                }
+            };
+
+            var toggleGroup = function (item) {
+                var grid = item.up("gridpanel"),
+                    groupName = item.text;
+
+                if (item.checked) {
+                    grid.groupingFeature.expand(groupName, true);
+                } else {
+                    grid.groupingFeature.collapse(groupName, true);
+                }
+            };
+
+            var onGroupChange = function (store, grouper) {
+                var grid = App.GridPanel1,
+                    grouped = store.isGrouped(),
+                    groupBy = grouper ? grouper.getProperty() : "",
+                    groupingFeature = grid.groupingFeature,
+                    clearBtn = grid.down("button[text$= Grouping]"),
+                    toggleMenuItems, len, i = 0;
+
+                // Sync state of group toggle checkboxes
+                if (grouped) {
+                    if (groupBy === "cuisine") {
+                        toggleMenuItems = grid.down("button[text=Toggle]").menu.items.items;
+
+                        for (len = toggleMenuItems.length; i < len; i++) {
+                            toggleMenuItems[i].setChecked(
+                                groupingFeature.isExpanded(toggleMenuItems[i].text)
+                            );
+                        }
+
+                        grid.query("button[text=Toggle], button[iconCls^=x-md]").forEach(function (item) { item.enable(); });
+                    }
+
+                    clearBtn.setText(clearBtn.initialConfig.text);
+                } else {
+                    grid.query("button[text=Toggle], button[iconCls^=x-md]").forEach(function (item) { item.disable(); });
+                    clearBtn.setText(clearBtn.setGroupingText);
+                }
+            };
+
+            var onGroupCollapse = function (v, n, groupName) {
+                var grid = v.up("gridpanel");
+
+                if (!grid.down("[text=Toggle]").disabled) {
+                    grid.down("menucheckitem[text=" + groupName + "]").setChecked(false, true);
+                }
+            };
+
+            var onGroupExpand = function (v, n, groupName) {
+                var grid = v.up("gridpanel");
+
+                if (!grid.down("[text=Toggle]").disabled) {
+                    grid.down("menucheckitem[text=" + groupName + "]").setChecked(true, true);
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <ext-gridPanel
+            id="GridPanel1"
+            title="Restaurants"
+            iconCls="x-md md-icon-grid-on"
+            frame="true"
+            width="960"
+            height="640">
+            <store>
+                <ext-store data="KitchenSink.Restaurants.GetAllRestaurants()" groupField="cuisine">
+                    <model>
+                        <ext-model>
+                            <fields>
+                                <ext-dataField name="name" />
+                                <ext-dataField name="cuisine" />
+                                <ext-dataField name="description" />
+                                <ext-dataField name="rating" type="Int" />
+                            </fields>
+                        </ext-model>
+                    </model>
+                    <sorters>
+                        <ext-sorter property="cuisine" />
+                        <ext-sorter property="name" />
+                    </sorters>
+                    <listeners>
+                        <groupChange fn="onGroupChange" buffer="10" />
+                    </listeners>
+                </ext-store>
+            </store>
+            <columns>
+                <ext-column text="Name" flex="1" dataIndex="name" />
+                <ext-column text="Cuisine" flex="1" dataIndex="cuisine" />
+            </columns>
+            <features>
+                <ext-groupingGridFeature
+                    hideGroupedHeader="true"
+                    groupHeaderTpl="{columnName}: {name} ({rows.length} Item{[values.rows.length > 1 ? 's' : '']})"
+                    startCollapsed="true"
+                    />
+            </features>
+            <bbar>
+                <ext-toolbar>
+                    <items>
+                        <ext-button
+                            iconCls="x-md md-icon-add-circle-outline"
+                            tooltip="Expand all"
+                            onClientClick="this.up('gridpanel').groupingFeature.expandAll();"
+                            />
+                        <ext-button
+                            iconCls="x-md md-icon-remove-circle-outline"
+                            tooltip="Collapse all"
+                            onClientClick="this.up('gridpanel').groupingFeature.collapseAll();"
+                            />
+                        <ext-button text="Toggle" destroyMenu="true">
+                            <menu>
+                                <ext-menu />
+                            </menu>
+                            <listeners>
+                                <beforeRender fn="onToggleButtonBeforeRender" />
+                            </listeners>
+                        </ext-button>
+                        <ext-toolbarFill />
+                        <ext-button text="Remove Grouping" handler="onClearGroupingClick" x-setGroupingText="Add Grouping" />
+                    </items>
+                </ext-toolbar>
+            </bbar>
+            <viewConfig>
+                <ext-tableView>
+                    <customConfig>
+                        <ext-add key="listeners">
+                            <ext-add key="groupCollapse">
+                                <ext-add key="fn" value="onGroupCollapse" mode="Raw" />
+                            </ext-add>
+                            <ext-add key="groupExpand">
+                                <ext-add key="fn" value="onGroupExpand" mode="Raw" />
+                            </ext-add>
+                        </ext-add>
+                    </customConfig>
+                </ext-tableView>
+            </viewConfig>
+        </ext-gridPanel>
+    </body>
+</html>

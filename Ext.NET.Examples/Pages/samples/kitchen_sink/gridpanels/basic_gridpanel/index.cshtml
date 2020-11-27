@@ -1,0 +1,44 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.kitchen_sink.gridpanels.basic_gridpanel.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Basic GridPanel - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <ext-gridPanel
+            title="Restaurants"
+            frame="true"
+            width="480"
+            height="360">
+            <store>
+                <ext-store data="KitchenSink.Restaurants.GetAllRestaurants()">
+                    <model>
+                        <ext-model>
+                            <fields>
+                                <ext-dataField name="name" />
+                                <ext-dataField name="cuisine" />
+                                <ext-dataField name="description" />
+                                <ext-dataField name="rating" type="Int" />
+                            </fields>
+                        </ext-model>
+                    </model>
+                    <sorters>
+                        <ext-sorter property="cuisine" direction="DESC" />
+                        <ext-sorter property="name" />
+                    </sorters>
+                </ext-store>
+            </store>
+            <columns>
+                <ext-column text="Name" flex="1" dataIndex="name" />
+                <ext-column text="Cuisine" flex="1" dataIndex="cuisine" />
+            </columns>
+        </ext-gridPanel>
+    </body>
+</html>

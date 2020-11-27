@@ -1,0 +1,52 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.layout.accordion.original_header.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Basic Accordion Layout - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <ext-viewport layout="Border">
+            <items>
+                <ext-panel
+                    width="480"
+                    region="East"
+                    layout="Fit"
+                    bodyPadding="18">
+                    <items>
+                        <ext-panel layout="Accordion" marginAsString="0 0 15 0">
+                            <layout>
+                                <ext-accordionLayout originalHeader="true" />
+                            </layout>
+                            <items>
+                                <ext-panel title="Item 1" />
+                                <ext-panel title="Item 2" />
+                                <ext-panel title="Item 3" />
+                                <ext-panel title="Item 4" />
+                                <ext-panel title="Item 5" />
+                            </items>
+                        </ext-panel>
+                    </items>
+                </ext-panel>
+                <ext-panel
+                    margin="5"
+                    region="Center"
+                    bodyPadding="18">
+                    <content>
+                        <p>
+                            Configuring the accordion layout to render the panel headers using their original
+                            header style instead of the default accordion layout style by setting
+                            <code>&lt;ext-accordionLayout originalHeader="true" /&gt;</code>.
+                        </p>
+                    </content>
+                </ext-panel>
+            </items>
+        </ext-viewport>
+    </body>
+</html>

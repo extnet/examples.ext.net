@@ -1,0 +1,58 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.kitchen_sink.panels.basic_panel.IndexModel
+@{
+    Layout = null;
+    var HTML = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas gravida nibh,
+    quis porttitor felis venenatis id. Nam sodales mollis quam eget venenatis. Aliquam metus lorem,
+    tincidunt ut egestas imperdiet, convallis lacinia tortor.";
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Basic Panel - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <ext-viewport>
+            <layout>
+                <ext-vboxLayout align="Middle" pack="Center" />
+            </layout>
+            <items>
+                <ext-container style="background:transparent;" marginAsString="0 0 10 0">
+                    <layout>
+                        <ext-tableLayout columns="3" />
+                    </layout>
+                    <defaults>
+                        <ext-add key="width" value="200" mode="Raw" />
+                        <ext-add key="height" value="270" mode="Raw" />
+                        <ext-add key="bodyPadding" value="18" mode="Raw" />
+                        <ext-add key="scrollable" value="both" />
+                        <ext-add key="margin" value="10" mode="Raw" />
+                        <ext-add key="html" value=@HTML />
+                    </defaults>
+                    <items>
+                        <ext-panel />
+                        <ext-panel title="Title" />
+                        <ext-panel>
+                            <tools>
+                                <ext-tool type="Pin" />
+                                <ext-tool type="Refresh" />
+                                <ext-tool type="Search" />
+                                <ext-tool type="Save" />
+                            </tools>
+                        </ext-panel>
+                        <ext-panel
+                            x:raw-colspan="3"
+                            title="Collapsed Panel"
+                            collapsed="true"
+                            collapsible="true"
+                            width="640"
+                            />
+                    </items>
+                </ext-container>
+            </items>
+        </ext-viewport>
+    </body>
+</html>

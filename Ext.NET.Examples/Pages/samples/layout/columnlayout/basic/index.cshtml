@@ -1,0 +1,38 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.layout.columnlayout.basic.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Column Layout - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <ext-viewport layout="Column">
+            <items>
+                <ext-panel
+                    columnWidth="0.25"
+                    title="Width = 25%"
+                    bodyPadding="18"
+                    html="This is some content."
+                    />
+                <ext-panel
+                    columnWidth="0.75"
+                    title="Width = 75%"
+                    bodyPadding="18"
+                    html="This is some content."
+                    />
+                <ext-panel
+                    title="Width = 250px"
+                    width="250"
+                    bodyPadding="18"
+                    html="This is some content."
+                    />
+            </items>
+        </ext-viewport>
+    </body>
+</html>

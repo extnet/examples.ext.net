@@ -1,0 +1,231 @@
+@page "{handler?}"
+@using MojeeIO
+@model Ext.Net.Examples.Pages.IndexModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ext.NET Examples - ASP.NET Core 3.1 (Razor Pages + MVC) component framework integrating the cross-browser Sencha Ext JS JavaScript Library.</title>
+
+    <link rel="stylesheet" href="~/resources/css/main.css?@ExtNetVersion.CacheBuster" />
+    <script src="~/resources/js/main.js?@ExtNetVersion.CacheBuster" data-manual></script>
+</head>
+<body>
+    <!-- Home page -->
+    <div id="homeTabContent" class="home-tab-content x-hidden">
+        <h1>@(Emoji.Get("clap")) NEW @(Emoji.Get("clap")) Ext.NET Classic v7 for ASP.NET Core</h1>
+
+        <div class="hero">
+            <p>EXT.NET is an <strong>ASP.NET Core 3.1 component framework</strong>. 🚀 Boost your production with 140+ components and the all new <a href="https://themes.ext.net" target="_blank" class="link">Spotless</a> premium theme</p>
+            <div><img class="hero-image" src="/resources/images/hero.png"></div>
+        </div>
+
+        <h4 class="title-success">Some popular examples</h4>
+
+        <div class="examples-grid">
+            <div class="example-panel">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" overflow="visible"><circle cx="30" cy="30" r="30" fill="#e8f3ff"/><path d="M40.5 45.5h-20c-.55 0-1-.45-1-1V23c0-.55.45-1 1-1h20c.55 0 1 .45 1 1v21.5c0 .55-.45 1-1 1z" fill="#fff"/><path d="M40.5 15h-20c-.83 0-1.5.67-1.5 1.5v28c0 .83.67 1.5 1.5 1.5h20c.83 0 1.5-.67 1.5-1.5v-28c0-.83-.67-1.5-1.5-1.5zm.5 29.5c0 .28-.22.5-.5.5h-20c-.28 0-.5-.22-.5-.5V23h21v21.5z" fill="#75b8ff"/><path fill="#badbff" d="M22 25h16v2H22zM22 35h16v2H22zM22 30h12v2H22z"/></svg>
+                <h5 class="title">Panels</h5>
+                <p>Panels are great for dividing and organizing content into groups.</p>
+                <a class="panel-link" href="/#/kitchen_sink/panels/basic_panel" onClick="loadExample({text: 'Basic Panel', path: 'samples/kitchen_sink/panels/basic_panel'})"></a>
+            </div>
+
+            <div class="example-panel">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" overflow="visible"><circle cx="30" cy="30" r="30" fill="#e9f8f4"/><path d="M42 36H18c-1.1 0-2-.9-2-2v-8c0-1.1.9-2 2-2h24c1.1 0 2 .9 2 2v8c0 1.1-.9 2-2 2z" fill="#24ba97"/><path fill="#7cd6c1" d="M21 29h18v2H21z"/></svg>
+                <h5 class="title">Buttons</h5>
+                <p>Users will take actions and make choices using buttons in your app.</p>
+                <a class="panel-link" href="/#/buttons/basic/variations" onClick="loadExample({text: 'Variations', path: 'samples/buttons/basic/variations'})"></a>
+            </div>
+
+            <div class="example-panel example-panel-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" overflow="visible"><circle cx="30" cy="30" r="30" fill="#75b8ff"/><path fill="#fff" d="M20 22h21v23H20z"/><path d="M40.5 15h-20c-.83 0-1.5.67-1.5 1.5v28c0 .83.67 1.5 1.5 1.5h20c.83 0 1.5-.67 1.5-1.5v-28c0-.83-.67-1.5-1.5-1.5zM26 34v5h-6v-5h6zm-6-1v-5h6v5h-6zm7 1h7v5h-7v-5zm0-1v-5h7v5h-7zm0-6v-4h7v4h-7zm-1-4v4h-6v-4h6zm-5.5 22c-.28 0-.5-.22-.5-.5V40h6v5h-5.5zm6.5 0v-5h7v5h-7zm14-.5c0 .28-.22.5-.5.5H35v-5h6v4.5zm0-5.5h-6v-5h6v5zm0-6h-6v-5h6v5zm0-6h-6v-4h6v4z" fill="#36a0ff"/></svg>
+                <h5 class="title">GridPanels</h5>
+                <p>Use grid panels to present data tables with controls like pagination.</p>
+                <a class="panel-link" href="/#/gridpanel/arraygrid/simple" onClick="loadExample({'text':'Simple','path':'samples/gridpanel/arraygrid/simple'})"></a>
+            </div>
+
+            <div class="example-panel example-panel-warning">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" overflow="visible"><circle cx="30" cy="30" r="30" fill="#ffda6a"/><path fill="#e8a707" d="M15 24h6v17h-6zM39 31h6v10h-6zM23 27h6v14h-6zM31 20h6v21h-6z"/></svg>
+                <h5 class="title">Charts</h5>
+                <p>Using charts is a great way to present data in a visual way.</p>
+                <a class="panel-link" href="/#/chart/miscellaneous/basic" onClick="loadExample({text: 'Basic', path: 'samples/chart/miscellaneous/basic'})"></a>
+            </div>
+
+            <div class="example-panel">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" overflow="visible"><circle cx="30" cy="30" r="30" fill="#ffe6e6"/><path d="M30.31 12.88c-9.21 0-16.69 7.47-16.69 16.69s7.47 16.69 16.69 16.69S47 38.78 47 29.56s-7.47-16.68-16.69-16.68zm-.87 30.06V32.47h-5.82l8.36-16.29v10.47h5.6l-8.14 16.29z" fill="#ff7676"/></svg>
+                <h5 class="title">DirectEvents</h5>
+                <p>Lightweight requests between the client web browser and the server.</p>
+                <a class="panel-link" href="/#/window/basic/hello_world" onClick="loadExample({text: 'Hello World', path: 'samples/window/basic/hello_world'})"></a>
+            </div>
+
+            <div class="example-panel">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" overflow="visible"><circle cx="30" cy="30" r="30" fill="#ffecb4"/><path fill="#ffc107" d="M40 33v-8h-8v4h-8v-6h4v-9h-9v9h4v20h9v4h8v-8h-8v3h-8V30h8v3z"/></svg>
+                <h5 class="title">TreePanels</h5>
+                <p>Using TreePanels you can display nested menus easily.</p>
+                <a class="panel-link" href="/#/treepanel/basic/built_in_markup" onClick="loadExample({text: 'Built In Markup', path: 'samples/treepanel/basic/built_in_markup'})"></a>
+            </div>
+        </div>
+
+        <div class="panel-help">
+            <h4 class="title-success">Need help?</h4>
+            <p>We are proud to have a large <a class="link" href="https://forums.ext.net/" target="_blank">developer community</a> for exchanging information as well as <a class="link" href="https://ext.net/pricing/#benefits" target="_blank">Premium Support</a> with a maximum 24h response time.</p>
+        </div>
+
+        <div class="panel-download">
+            <h4 class="title-primary">Download and try Ext.NET</h4>
+            <p>You can download Ext.NET and start testing it locally right away. In order to deploy and use it for commercial projects, you will need to get a license.</p>
+            <a class="btn btn-primary" href="https://ext.net/download" target="_blank">Download Ext.NET</a>
+        </div>
+    </div>
+    <!-- /Home page -->
+
+    <!-- Sidebar right -->
+    <div id="rightNavMenuContents" class="x-hidden">
+        <ul id="nav-menu" class="nav-menu">
+            <li><a href="https://docs.ext.net/">Ext.NET Docs</a></li>
+            <li><a href="https://docs.sencha.com/extjs/7.3.1/classic/Ext.html">EXT JS Docs</a></li>
+            <li class="separator"></li>
+            <li><a href="https://forums.ext.net/">Community Forums</a></li>
+            <li><a href="https://ext.net/faq/">FAQ</a></li>
+            <li><a href="https://ext.net/contact/">Contact</a></li>
+            <li><a href="https://ext.net/pricing/">Pricing</a></li>
+            <li><a href="https://themes.ext.net/">Themes</a></li>
+            <li><a href="https://ext.net/">Ext.NET Home</a></li>
+            <li class="separator"></li>
+        </ul>
+        <a href="https://ext.net/download/" class="btn btn-success btn-block">Get Ext.NET</a>
+    </div>
+    <!-- /Sidebar right -->
+
+    <ext-viewport layout="Fit">
+        <items>
+            <ext-container layout="Border" id="examplesWrapper">
+                <items>
+                    <ext-container
+                        region="North"
+                        height="64"
+                        x-bodyPadding="0 15"
+                        cls="site-header">
+                        <layout>
+                            <ext-hBoxLayout align="Middle" pack="Start" />
+                        </layout>
+                        <items>
+                            <ext-component
+                                cls="site-logo"
+                                height="38"
+                                flex="1"
+                                html=@("<a href=\"https://ext.net/\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"160\" height=\"38.19\" overflow=\"visible\"><path d=\"M50.4 17.04h6.59v-2.8H50.4V11.2h7.33V8.27H47.11V23h10.85v-2.9H50.4zM77.35 8.27h-3.96l-2.8 4.36-2.81-4.36h-3.94l4.62 7.19L63.51 23h3.96l3.12-4.84L73.73 23h4l-4.97-7.63zM82.75 11.12h4.17V23h3.29V11.12h4.17V8.27H82.75zM101.09 19.46c-.52 0-.96.18-1.32.54-.36.36-.54.8-.54 1.32s.18.96.54 1.32c.36.36.8.54 1.32.54s.96-.18 1.32-.54c.36-.36.54-.8.54-1.32s-.18-.96-.54-1.32c-.36-.36-.8-.54-1.32-.54zM120.46 17.76l-7.23-9.49h-3.08V23h3.29v-9.23l7.02 9.23h3.29V8.27h-3.29zM134.65 17.04h6.59v-2.8h-6.59V11.2h7.33V8.27h-10.62V23h10.85v-2.9h-7.56zM148.36 8.27v2.85h4.18V23h3.29V11.12H160V8.27zM0 31.44h31.44V0H0v31.44zM3.89 3.89h23.67v23.67h-5.31V9.2H3.89V3.89zm0 9.19h14.47v14.47h-5.29v-9.18H3.89v-5.29zm0 9.18h5.3v5.3h-5.3v-5.3z\"/><g><path fill=\"#95c93d\" d=\"M100.23 28.81c1.7 0 2.99 1.27 2.99 3.24 0 1.96-1.3 3.28-2.99 3.28-1.15 0-1.97-.58-2.36-1.27v1.16h-1.05V26.7h1.05v3.38c.41-.7 1.25-1.27 2.36-1.27zm-.21.91c-1.14 0-2.14.87-2.14 2.34 0 1.49 1 2.35 2.14 2.35 1.16 0 2.14-.88 2.14-2.36 0-1.49-.98-2.33-2.14-2.33zM108.97 28.91h1.08l-3.8 9.28h-1.08l1.24-3.04-2.54-6.24h1.16l1.98 5.11 1.96-5.11zM116.72 35.3c-1.61 0-2.75-.9-2.77-2.22h1.12c.07.67.54 1.34 1.66 1.34 1.01 0 1.61-.58 1.61-1.34 0-2.16-4.34-.78-4.34-3.76 0-1.32 1.07-2.22 2.66-2.22 1.53 0 2.53.84 2.66 2.06h-1.15c-.07-.54-.58-1.15-1.55-1.16-.86-.02-1.54.43-1.54 1.29 0 2.07 4.33.78 4.33 3.75-.02 1.13-.95 2.26-2.69 2.26zM123.67 35.33c-1.8 0-3.12-1.27-3.12-3.27 0-1.99 1.28-3.25 3.12-3.25 1.83 0 3.03 1.29 3.03 3.02 0 .23-.01.41-.03.63h-5.04c.08 1.28.98 1.98 2.05 1.98.94 0 1.54-.48 1.77-1.16h1.13c-.34 1.15-1.35 2.05-2.91 2.05zm-2.04-3.72h3.98c.01-1.23-.91-1.91-1.99-1.91-1.02 0-1.88.67-1.99 1.91zM132.7 31.65c0-1.29-.7-1.95-1.76-1.95-1.07 0-1.81.67-1.81 2.03v3.49h-1.05v-6.31h1.05v.9c.41-.66 1.17-1.01 2.03-1.01 1.46 0 2.58.9 2.58 2.71v3.72h-1.04v-3.58zM138.13 28.81c1.57 0 2.59.81 2.91 2.13h-1.13c-.22-.76-.85-1.24-1.78-1.24-1.15 0-2 .82-2 2.36 0 1.57.85 2.38 2 2.38.93 0 1.55-.45 1.78-1.24h1.13c-.32 1.25-1.35 2.13-2.91 2.13-1.8 0-3.07-1.27-3.07-3.27 0-1.98 1.28-3.25 3.07-3.25zM142.44 26.7h1.05v3.12c.41-.67 1.2-1.02 2.08-1.02 1.4 0 2.52.9 2.52 2.71v3.72h-1.04v-3.57c0-1.29-.7-1.95-1.76-1.95-1.07 0-1.81.67-1.81 2.03v3.49h-1.05V26.7zM152.42 28.81c1.17 0 1.98.6 2.35 1.25v-1.15h1.06v6.31h-1.06v-1.17c-.38.68-1.2 1.28-2.36 1.28-1.68 0-2.98-1.32-2.98-3.28-.01-1.97 1.3-3.24 2.99-3.24zm.21.91c-1.15 0-2.13.84-2.13 2.33 0 1.49.98 2.36 2.13 2.36s2.14-.86 2.14-2.35c0-1.47-.99-2.34-2.14-2.34z\"/></g></svg></a><a href=\"/\" onClick=\"App.ExamplesPane.setActiveItem(0);return false;\"><span class=\"label\">Examples</span></a>")
+                                />
+                            <ext-component flex="1" />
+                            <ext-button text="Classic v@(ExtNetVersion.MajorMinorRevision)" ui="Light" menuAlign="tr-br?" x-margin="0 -15 0 0">
+                                <menu>
+                                    <ext-menu plain="true">
+                                        <items>
+                                            <ext-menuItem text="Classic v@(ExtNetVersion.MajorMinorRevision)" />
+                                            <ext-menuSeparator />
+                                            <ext-menuItem text="Legacy v5.2 for Web Forms" href="https://examples5.ext.net/" />
+                                            <ext-menuItem text="Legacy v5.2 for MVC" href="https://mvc5.ext.net/" />
+                                            <ext-menuSeparator />
+                                            <ext-menuItem text="Legacy v4.8 for Web Forms" href="https://examples4.ext.net/" />
+                                            <ext-menuItem text="Legacy v4.8 for MVC" href="https://mvc4.ext.net/" />
+                                            <ext-menuSeparator />
+                                            <ext-menuItem text="Legacy v3.3 for Web Forms" href="https://examples3.ext.net/" />
+                                            <ext-menuItem text="Legacy v3.3 for MVC" href="https://mvc3.ext.net/" />
+                                            <ext-menuSeparator />
+                                            <ext-menuItem text="Legacy v2.5 for Web Forms" href="https://examples2.ext.net/" />
+                                            <ext-menuItem text="Legacy v2.5 for MVC" href="https://mvc2.ext.net/" />
+                                            <ext-menuSeparator />
+                                            <ext-menuItem text="Legacy v1.7 for Web Forms" href="https://examples1.ext.net/" />
+                                        </items>
+                                        <listeners>
+                                            <click handler="menu.up().setText(item.text);" />
+                                        </listeners>
+                                    </ext-menu>
+                                </menu>
+                            </ext-button>
+                            <ext-component width="80" html='<input type="checkbox" id="menu-button-checkbox"><label id="menu-button" onClick="toggleRightNavMenu()" for=menu-button-checkbox><span></span></label>' />
+                        </items>
+                    </ext-container>
+                    <ext-container
+                        id="RightNavMenu"
+                        region="East"
+                        width="280"
+                        hidden="true"
+                        cls="right-nav-menu"
+                        contentEl="rightNavMenuContents"
+                        />
+                    <ext-treePanel
+                        id="TreePanel"
+                        region="West"
+                        width="280"
+                        emptyText="No example to display"
+                        rootVisible="false"
+                        useArrows="true"
+                        rounded="false">
+                        <store>
+                            <ext-treeStore model="Model.ExamplesTree" />
+                        </store>
+                        <listeners>
+                            <itemclick fn="handleTreeClick" />
+                        </listeners>
+                        <viewConfig>
+                            <ext-treeView cls="tree-view" />
+                        </viewConfig>
+                        <tbar>
+                            <ext-toolbar cls="filter-container">
+                                <items>
+                                    <ext-textField id="searchField" x-width="100%" emptyText="Filter...">
+                                        <listeners>
+                                            <change fn="filterTree.filter" buffer="50" />
+                                        </listeners>
+                                    </ext-textField>
+                                </items>
+                            </ext-toolbar>
+                        </tbar>
+                    </ext-treePanel>
+                    <ext-tabPanel id="ExamplesPane" plain="true" region="Center" rounded="false">
+                        <items>
+                            <ext-panel
+                                iconCls="x-md icon-sm md-icon-home"
+                                x-bodyPadding="40 60 90"
+                                closable="false"
+                                scrollable="true"
+                                contentEl="homeTabContent"
+                                />
+                        </items>
+                        <listeners>
+                            <afterRender fn="checkProvidedUrl" />
+                            <tabChange fn="switchTab" />
+                        </listeners>
+                    </ext-tabPanel>
+                </items>
+            </ext-container>
+            <ext-window
+                id="SourceWindow"
+                title="Source code"
+                ui="Light"
+                iconCls="x-md icon-sm md-icon-code"
+                x-height="80%"
+                x-width="80%"
+                layout="Fit"
+                hidden="true"
+                modal="true">
+                <items>
+                    <ext-tabPanel id="SourceWindowTabPanel" plain="true" rounded="false" />
+                </items>
+                <listeners>
+                    <show handler="this.removeCls('x-unselectable');" />
+                </listeners>
+            </ext-window>
+        </items>
+    </ext-viewport>
+    <link rel="stylesheet" href="~/resources/css/prism.css?@ExtNetVersion.CacheBuster" />
+    <script src="~/resources/js/prism.js?@ExtNetVersion.CacheBuster" data-manual></script>
+</body>
+</html>

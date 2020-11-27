@@ -1,0 +1,65 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.window.toast.overview.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Window Toast Overview - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+        <link href="/resources/css/prism.css" rel="stylesheet" />
+        <script src="/resources/js/prism.js"></script>
+    </head>
+    <body>
+        <h1>
+            Toast Overview
+        </h1>
+
+        <h4>
+            Client-Side Toast
+        </h4>
+
+        <ext-button handler="Ext.toast('Toast 1');" text="Toast 1" />
+
+        <h4>
+            Server-Side Toast
+        </h4>
+
+        <ext-button onDirectClick="Button2_Click" text="Toast 2" />
+
+        <h4>
+            Server-Side Toast With Title And Position
+        </h4>
+
+        <ext-button onDirectClick="Button3_Click" text="Toast 3" />
+
+        <h4>
+            Server-Side Toast Defined By Config Object
+        </h4>
+
+        <ext-button id="Button4" onDirectClick="Button4_Click" text="Toast 4" />
+
+        <h4>
+            Markup Toast
+        </h4>
+
+        <p>
+            A Toast added in markup and triggered automatically when the page is first loaded:
+        </p>
+
+        <pre><code class="language-markup">&lt;ext-toast&gt;
+    &lt;content&gt;
+        Toast rendered on page load
+    &lt;/content&gt;
+&lt;/ext-toast&gt;</code></pre>
+
+        <ext-toast>
+            <content>
+                Toast rendered on page load
+            </content>
+        </ext-toast>
+    </body>
+</html>

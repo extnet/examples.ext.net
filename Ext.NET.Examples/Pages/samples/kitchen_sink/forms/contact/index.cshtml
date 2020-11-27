@@ -1,0 +1,79 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.kitchen_sink.forms.contact.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Contact Form - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <ext-viewport>
+            <layout>
+                <ext-vboxLayout align="Middle" pack="Center" />
+            </layout>
+            <items>
+                <ext-formPanel
+                    title="Contact Us"
+                    frame="true"
+                    height="480"
+                    width="480"
+                    bodyPadding="18"
+                    x-defaultAnchor="100%">
+                    <fieldDefaults>
+                        <ext-add key="labelAlign" value="top" />
+                        <ext-add key="labelWidth" value="100" mode="Raw" />
+                    </fieldDefaults>
+                    <defaults>
+                        <ext-add key="margin" value="0 0 10 0" />
+                    </defaults>
+                    <items>
+                        <ext-fieldContainer fieldLabel="Name" layout="HBox">
+                            <fieldDefaults>
+                                <ext-add key="labelAlign" value="top" />
+                            </fieldDefaults>
+                            <items>
+                                <ext-textField
+                                    name="firstName"
+                                    flex="1"
+                                    fieldLabel="First"
+                                    allowBlank="false"
+                                    labelAlign="Top"
+                                    />
+                                <ext-textField
+                                    width="30"
+                                    name="middleInitial"
+                                    fieldLabel="MI"
+                                    marginAsString="0 0 0 5"
+                                    />
+                                <ext-textField
+                                    flex="2"
+                                    name="lastName"
+                                    fieldLabel="Last"
+                                    allowBlank="false"
+                                    marginAsString="0 0 0 5"
+                                    />
+                            </items>
+                        </ext-fieldContainer>
+                        <ext-textField fieldLabel="Email" vtype="email" allowBlank="false" />
+                        <ext-textField fieldLabel="Subject" allowBlank="false" />
+                        <ext-textArea
+                            fieldLabel="Message"
+                            flex="1"
+                            margin="0"
+                            allowBlank="false"
+                            />
+                    </items>
+                    <buttons>
+                        <ext-button text="Cancel" />
+                        <ext-button text="Send" />
+                    </buttons>
+                </ext-formPanel>
+            </items>
+        </ext-viewport>
+    </body>
+</html>

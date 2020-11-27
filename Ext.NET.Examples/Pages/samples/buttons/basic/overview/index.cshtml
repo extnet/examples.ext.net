@@ -1,0 +1,179 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.buttons.basic.overview.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Button Variations - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+        <style>
+            .custom-icon1 {
+                background-image : url(arrow-down.gif) !important;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>
+            Buttons
+        </h1>
+
+        <h4>
+            1. Button with Listener
+        </h4>
+
+        <ext-button text="Click Me">
+            <listeners>
+                <click handler="Ext.toast('Client click 👍');" />
+            </listeners>
+        </ext-button>
+
+        <h4>
+            2. Button with DirectEvent
+        </h4>
+
+        <ext-button text="Click Me" onDirectClick="Button_Click" />
+
+        <h4>
+            3. Button with Icon
+        </h4>
+
+        <ext-button text="Text" iconCls="x-md md-icon-check-circle-outline" />
+
+        <h4>
+            4. Button with QuickTip
+        </h4>
+
+        <ext-button text="Text">
+            <tooltip>
+                <ext-quickTip title="Title" text="Description" />
+            </tooltip>
+        </ext-button>
+
+        <h4>
+            5. Toggle Buttons
+        </h4>
+
+        <ext-container layout="HBox">
+            <defaults>
+                <ext-add key="margin" value="0 5 0 0" />
+            </defaults>
+            <items>
+                <ext-button
+                    text="Button1"
+                    enableToggle="true"
+                    toggleGroup="Group1"
+                    pressed="true"
+                    />
+                <ext-button
+                    text="Button2"
+                    enableToggle="true"
+                    toggleGroup="Group1"
+                    />
+                <ext-button
+                    text="Button3"
+                    enableToggle="true"
+                    toggleGroup="Group1"
+                    />
+            </items>
+        </ext-container>
+
+        <h4>
+            6. Button with menu
+        </h4>
+
+        <ext-button text="Text">
+            <menu>
+                <ext-menu>
+                    <items>
+                        <ext-menuItem text="Item 1" iconCls="x-md md-icon-edit" />
+                        <ext-menuItem text="Item 2" iconCls="x-md md-icon-save" />
+                        <ext-menuItem text="Item 3" iconCls="x-md md-icon-print" />
+                    </items>
+                    <listeners>
+                        <click handler="menu.up().setText(item.text); Ext.toast(item.text + ' clicked 👍')" />
+                    </listeners>
+                </ext-menu>
+            </menu>
+        </ext-button>
+
+        <h4>
+            7. SplitButton with menu
+        </h4>
+
+        <ext-splitButton text="Text">
+            <menu>
+                <ext-menu>
+                    <items>
+                        <ext-menuItem text="Item 1" iconCls="x-md md-icon-edit" />
+                        <ext-menuItem text="Item 2" iconCls="x-md md-icon-save" />
+                        <ext-menuItem text="Item 3" iconCls="x-md md-icon-print" />
+                    </items>
+                </ext-menu>
+            </menu>
+        </ext-splitButton>
+
+        <h4>
+            8. SplitButton with custom drop down
+        </h4>
+
+        <ext-splitButton text="Text">
+            <bin>
+                <ext-panel
+                    width="270"
+                    height="360"
+                    layout="Accordion"
+                    floating="true">
+                    <items>
+                        <ext-panel title="Item 1" />
+                        <ext-panel title="Item 2" />
+                    </items>
+                    <buttons>
+                        <ext-button text="Close" handler="function () {this.up('panel').hide();}" />
+                    </buttons>
+                </ext-panel>
+            </bin>
+            <listeners>
+                <arrowClick handler="this.bin[0].show(); this.bin[0].alignTo(this.el);" />
+            </listeners>
+        </ext-splitButton>
+
+        <h4>
+            9. CycleButton
+        </h4>
+
+        <ext-cycleButton showText="true" prependText="View As ">
+            <menu>
+                <ext-menu>
+                    <items>
+                        <ext-checkMenuItem text="Text Only" iconCls="x-md md-icon-check-circle-outline" />
+                        <ext-checkMenuItem text="Html" iconCls="x-md md-icon-check-circle-outline" checked="true" />
+                    </items>
+                </ext-menu>
+            </menu>
+        </ext-cycleButton>
+
+        <h4>
+            10. UI Button
+        </h4>
+
+        <ext-button text="Light Button" ui="Light" iconCls="x-md md-icon-check-circle-outline" />
+        <br />
+        <ext-button text="Danger Button" ui="Danger" iconCls="x-md md-icon-check-circle-outline" />
+
+        <h4>
+            11. Custom Size Button
+        </h4>
+
+        <ext-button text="128 x 128" height="128" width="128" />
+
+        <h4>
+            12. Hyperlink
+        </h4>
+
+        <ext-hyperlink text="Hyperlink" />
+    </body>
+</html>

@@ -1,0 +1,148 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.treepanel.basic.built_in_markup.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            TreePanel built using TagHelpers - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>
+            TreePanel built using TagHelpers
+        </h1>
+        <ext-treePanel
+            id="TreePanel1"
+            width="480"
+            height="600"
+            frame="true"
+            iconCls="x-md md-icon-menu-book"
+            title="Catalog"
+            scrollable="true">
+            <tbar>
+                <ext-toolbar>
+                    <items>
+                        <ext-button text="Expand All">
+                            <listeners>
+                                <click handler="App.TreePanel1.expandAll();" />
+                            </listeners>
+                        </ext-button>
+                        <ext-button text="Collapse All">
+                            <listeners>
+                                <click handler="App.TreePanel1.collapseAll();" />
+                            </listeners>
+                        </ext-button>
+                    </items>
+                </ext-toolbar>
+            </tbar>
+            <root>
+                <ext-treeNode text="Composers" expanded="true">
+                    <children>
+                        <ext-treeNode text="Beethoven" iconCls="x-md md-icon-person">
+                            <children>
+                                <ext-treeNode text="Concertos">
+                                    <children>
+                                        <ext-treeNode text="No. 1 - C" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="No. 2 - B-Flat Major" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="No. 3 - C Minor" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="No. 4 - G Major" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="No. 5 - E-Flat Major" iconCls="x-md md-icon-music-note" leaf="true" />
+                                    </children>
+                                </ext-treeNode>
+                                <ext-treeNode text="Quartets">
+                                    <children>
+                                        <ext-treeNode text="Six String Quartets" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="Three String Quartets" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="Grosse Fugue for String Quartets" iconCls="x-md md-icon-music-note" leaf="true" />
+                                    </children>
+                                </ext-treeNode>
+                                <ext-treeNode text="Sonatas">
+                                    <children>
+                                        <ext-treeNode text="Sonata in A Minor" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="sonata in F Major" iconCls="x-md md-icon-music-note" leaf="true" />
+                                    </children>
+                                </ext-treeNode>
+                                <ext-treeNode text="Symphonies">
+                                    <children>
+                                        <ext-treeNode text="No. 1 - C Major" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="No. 2 - D Major" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="No. 3 - E-Flat Major" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="No. 4 - B-Flat Major" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="No. 5 - C Minor" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="No. 6 - F Major" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="No. 7 - A Major" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="No. 8 - F Major" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="No. 9 - D Minor" iconCls="x-md md-icon-music-note" leaf="true" />
+                                    </children>
+                                </ext-treeNode>
+                            </children>
+                        </ext-treeNode>
+                        <ext-treeNode text="Brahms" iconCls="x-md md-icon-person">
+                            <children>
+                                <ext-treeNode text="Concertos">
+                                    <children>
+                                        <ext-treeNode text="Violin Concerto" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="Double Concerto - A Minor" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="Piano Concerto No. 1 - D Minor" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="Piano Concerto No. 2 - B-Flat Major" iconCls="x-md md-icon-music-note" leaf="true" />
+                                    </children>
+                                </ext-treeNode>
+                                <ext-treeNode text="Quartets">
+                                    <children>
+                                        <ext-treeNode text="Piano Quartet No. 1 - G Minor" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="Piano Quartet No. 2 - A Major" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="Piano Quartet No. 3 - C Minor" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="Piano Quartet No. 3 - B-Flat Minor" iconCls="x-md md-icon-music-note" leaf="true" />
+                                    </children>
+                                </ext-treeNode>
+                                <ext-treeNode text="Sonatas">
+                                    <children>
+                                        <ext-treeNode text="Two Sonatas for Clarinet - F Minor" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="Two Sonatas for Clarinet - E-Flat Major" iconCls="x-md md-icon-music-note" leaf="true" />
+                                    </children>
+                                </ext-treeNode>
+                                <ext-treeNode text="Symphonies">
+                                    <children>
+                                        <ext-treeNode text="No. 1 - C Minor" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="No. 2 - D Minor" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="No. 3 - F Major" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="No. 4 - E Minor" iconCls="x-md md-icon-music-note" leaf="true" />
+                                    </children>
+                                </ext-treeNode>
+                            </children>
+                        </ext-treeNode>
+                        <ext-treeNode text="Mozart" iconCls="x-md md-icon-person">
+                            <children>
+                                <ext-treeNode text="Concertos">
+                                    <children>
+                                        <ext-treeNode text="Piano Concerto No. 12" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="Piano Concerto No. 17" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="Clarinet Concerto" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="Violin Concerto No. 5" iconCls="x-md md-icon-music-note" leaf="true" />
+                                        <ext-treeNode text="Violin Concerto No. 4" iconCls="x-md md-icon-music-note" leaf="true" />
+                                    </children>
+                                </ext-treeNode>
+                            </children>
+                        </ext-treeNode>
+                    </children>
+                </ext-treeNode>
+            </root>
+            <bbar>
+                <ext-toolbar>
+                    <items>
+                        <ext-label id="lblStatus" html="&nbsp;" />
+                    </items>
+                </ext-toolbar>
+            </bbar>
+            <listeners>
+                <itemClick handler="App.lblStatus.setHtml('Node Selected: <strong>' + record.get('text') + '</strong>')" />
+                <afterItemExpand handler="App.lblStatus.setHtml('Node Expanded: <strong>' + node.get('text') + '</strong>')" buffer="30" />
+                <afterItemCollapse handler="App.lblStatus.setHtml('Node Collapsed: <strong>' + node.get('text') + '</strong>')" buffer="30" />
+            </listeners>
+        </ext-treePanel>
+    </body>
+</html>

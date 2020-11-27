@@ -1,0 +1,39 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.kitchen_sink.tabpanels.header_tabs.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Header Tabs - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>
+            Header Tabs
+        </h1>
+        <p>
+            The example demonstrates the use of <code>TabBarHeaderPostion</code>.
+        </p>
+        <p>
+            If specified the tabs are rendered into a TabPanel header.
+        </p>
+        <ext-tabPanel
+            title="Examples"
+            width="480"
+            height="480"
+            tabBarHeaderPosition="2">
+            <defaults>
+                <ext-add key="bodyPadding" value="10" mode="Raw" />
+            </defaults>
+            <items>
+                <ext-panel title="Ext.NET" html="Ext.NET" />
+                <ext-panel title="Sencha" html="Sencha" />
+                <ext-panel title=".NET" html=".NET Framework" />
+            </items>
+        </ext-tabPanel>
+    </body>
+</html>

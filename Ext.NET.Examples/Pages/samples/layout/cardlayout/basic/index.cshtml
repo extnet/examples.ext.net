@@ -1,0 +1,61 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.layout.cardlayout.basic.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        CardLayout - Ext.NET Examples
+    </title>
+    <link href="/resources/css/examples.css" rel="stylesheet" />
+</head>
+<body>
+    <ext-panel
+        id="WizardPanel"
+        title="Example Wizard"
+        bodyPadding="18"
+        height="480"
+        layout="Card"
+        activeItem="0">
+        <items>
+            <ext-container html="<h1>Welcome to the Wizard!</h1><p>Step 1 of 3</p>" />
+            <ext-container html="<h1>Card 2</h1><p>Step 2 of 3</p>" />
+            <ext-container html="<h1>Congratulations!</h1><p>Step 3 of 3 - Complete</p>" />
+        </items>
+        <buttons>
+            <ext-button
+                id="btnPrev"
+                text="Prev"
+                disabled="true"
+                iconCls="x-md md-icon-chevron-left">
+                <directEvents>
+                    <click pageHandler="Prev_Click">
+                        <extraParams>
+                            <ext-add key="index" value="App.WizardPanel.items.indexOf(App.WizardPanel.layout.activeItem)" mode="Raw" />
+                            <ext-add key="count" value="App.WizardPanel.items.getCount()" mode="Raw" />
+                            <ext-add key="panel" value="App.WizardPanel" mode="Raw" />
+                            <ext-add key="btnNext" value="App.btnNext" mode="Raw" />
+                            <ext-add key="btnPrev" value="App.btnPrev" mode="Raw" />
+                        </extraParams>
+                    </click>
+                </directEvents>
+            </ext-button>
+            <ext-button id="btnNext" text="Next" iconCls="x-md md-icon-chevron-right">
+                <directEvents>
+                    <click pageHandler="Next_Click">
+                        <extraParams>
+                            <ext-add key="index" value="App.WizardPanel.items.indexOf(App.WizardPanel.layout.activeItem)" mode="Raw" />
+                            <ext-add key="count" value="App.WizardPanel.items.getCount()" mode="Raw" />
+                            <ext-add key="panel" value="App.WizardPanel" mode="Raw" />
+                            <ext-add key="btnNext" value="App.btnNext" mode="Raw" />
+                            <ext-add key="btnPrev" value="App.btnPrev" mode="Raw" />
+                        </extraParams>
+                    </click>
+                </directEvents>
+            </ext-button>
+        </buttons>
+    </ext-panel>
+</body>
+</html>

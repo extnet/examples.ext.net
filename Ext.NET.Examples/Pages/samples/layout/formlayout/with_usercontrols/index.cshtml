@@ -1,0 +1,139 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.layout.formlayout.with_usercontrols.IndexModel
+@{
+    Layout = null;
+}
+@* <script runat="server">
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!X.IsAjaxRequest)
+        {
+            this.BindCustomer(this.GetCustomer());
+        }
+    }
+    protected void Button1_Click(object sender, DirectEventArgs e)
+    {
+        string template = "{0}: {1}<br />";
+        StringBuilder sb = new StringBuilder(255);
+        sb.AppendFormat(template, "Customer ID", this.txtCustomerID.Value);
+        sb.AppendFormat(template, "First Name", this.txtFirstName.Text);
+        sb.AppendFormat(template, "Last Name", this.txtLastName.Text);
+        sb.AppendFormat(template, "Company", this.txtCompany.Text);
+        this.Label1.Html = sb.ToString();
+    }
+    public void BindCustomer(Customer customer)
+    {
+        this.txtCustomerID.Value = customer.ID;
+        this.txtFirstName.Text = customer.FirstName;
+        this.txtLastName.Text = customer.LastName;
+        this.txtCompany.Text = customer.Company;
+        this.ucShipping.StreetAddress = customer.ShippingAddress.StreetAddress;
+        this.ucShipping.ZipPostalCode = customer.ShippingAddress.ZipPostalCode;
+        this.ucShipping.City = customer.ShippingAddress.City;
+        this.ucShipping.CountryID = customer.ShippingAddress.Country.Code;
+        if (customer.BillingAddress != null)
+        {
+            this.ucBilling.StreetAddress = customer.ShippingAddress.StreetAddress;
+            this.ucBilling.ZipPostalCode = customer.ShippingAddress.ZipPostalCode;
+            this.ucBilling.City = customer.ShippingAddress.City;
+            this.ucBilling.CountryID = customer.ShippingAddress.Country.Code;
+        }
+        else
+        {
+            this.ucBilling.ShowCheckbox = true;
+            this.ucBilling.Checked = true;
+            this.ucBilling.CheckboxMessage = "Same as Shipping";
+        }
+    }
+    public Customer GetCustomer()
+    {
+        Customer customer = new Customer();
+        customer.ID = "08-1";
+        customer.FirstName = "Geoffrey";
+        customer.LastName = "McGill";
+        customer.Company = "Ext.NET, Inc.";
+        Address address = new Address();
+        address.StreetAddress = "#208, 10113 104 Street";
+        address.ZipPostalCode = "T5J 1A1";
+        address.City = "Edmonton";
+        Country country = new Country();
+        country = new Country();
+        country.Code = "CA";
+        country.Name = "Canada";
+        address.Country = country;
+        customer.ShippingAddress = address;
+        return customer;
+    }
+    public class Customer
+    {
+        public string ID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName{ get; set; }
+        public string Company { get; set; }
+        public Address BillingAddress { get; set; }
+        public Address ShippingAddress { get; set; }
+    }
+    public class Address
+    {
+        public string StreetAddress { get; set; }
+        public string ZipPostalCode { get; set; }
+        public string City { get; set; }
+        public Country Country { get; set; }
+    }
+    public class Country
+    {
+        public string Name { get; set; }
+        public string Code { get; set; }
+    }
+</script> *@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            FormLayout with Nested UserControls - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+            <ext-label id="Label1" />
+            <ext-hidden id="txtCustomerID" />
+            <ext-window
+                id="Window1"
+                iconCls="x-md md-icon-person"
+                closable="false"
+                title="Customer Details"
+                width="360"
+                height="530"
+                resizable="false"
+                bodyStyle="background-color:#fff;"
+                bodyPadding="18"
+                layout="Anchor">
+                <items>
+                    <ext-textField id="txtFirstName" fieldLabel="First Name" allowBlank="false" />
+                    <ext-textField id="txtLastName" fieldLabel="Last Name" allowBlank="false" />
+                    <ext-textField id="txtCompany" fieldLabel="Company" />
+                    <ext-panel id="Panel1" header="false" layout="Fit">
+                        <content>
+                            <uc1:Address id="ucShipping" title="SHIPPING ADDRESS" />
+                        </content>
+                    </ext-panel>
+                    <ext-panel id="Panel2" header="false" layout="Fit">
+                        <content>
+                            <uc1:Address id="ucBilling" title="BILLING ADDRESS" />
+                        </content>
+                    </ext-panel>
+                </items>
+                <buttons>
+                    <ext-button id="Button1" text="Save" iconCls="x-md md-icon-save">
+                        <directEvents>
+                            <click pageHandler="Button1_Click">
+                                <eventMask>
+                                    <ext-eventMask showMask="true" msg="Saving..." minDelay="500" />
+                                </eventMask>
+                            </click>
+                        </directEvents>
+                    </ext-button>
+                </buttons>
+            </ext-window>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.layout.center.basic.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Center Layout - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <ext-viewport layout="Center">
+            <items>
+                <ext-panel
+                    title="Panel"
+                    width="360"
+                    height="270"
+                    bodyPadding="18"
+                    frame="true"
+                    html="This panel is centered within its container."
+                    />
+            </items>
+        </ext-viewport>
+    </body>
+</html>

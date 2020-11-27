@@ -1,0 +1,25 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.layout.fitlayout.basic.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Fit Layout - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <ext-viewport layout="Fit">
+            <items>
+                <ext-panel
+                    bodyPadding="18"
+                    title="Inner panel"
+                    html="This panel is fit 100% Height and 100% Width within its container."
+                    />
+            </items>
+        </ext-viewport>
+    </body>
+</html>

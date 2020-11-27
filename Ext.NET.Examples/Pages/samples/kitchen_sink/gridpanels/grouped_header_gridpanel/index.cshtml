@@ -1,0 +1,87 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.kitchen_sink.gridpanels.grouped_header_gridpanel.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Grouped Header GridPanel - Ext.NET Examples</title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+        <script>
+            var template = '<span style="color:{0};">{1}</span>';
+
+            var change = function (value) {
+                return Ext.String.format(template, (value > 0) ? "green" : "red", value);
+            };
+
+            var pctChange = function (value) {
+                return Ext.String.format(template, (value > 0) ? "green" : "red", value + "%");
+            };
+        </script>
+    </head>
+    <body>
+        <ext-gridPanel
+            title="Grouped Header"
+            width="960"
+            height="640"
+            frame="true"
+            columnLines="true">
+            <store>
+                <ext-store id="Store1" data="Model.Data">
+                    <model>
+                        <ext-model>
+                            <fields>
+                                <ext-dataField name="company" />
+                                <ext-dataField name="price" type="Float" />
+                                <ext-dataField name="change" type="Float" />
+                                <ext-dataField name="pctChange" type="Float" />
+                                <ext-dateDataField name="lastChange" dateFormat="yyyy-MM-dd hh:mm:tt" />
+                            </fields>
+                        </ext-model>
+                    </model>
+                </ext-store>
+            </store>
+            <columns>
+                <ext-column
+                    text="Company"
+                    dataIndex="company"
+                    flex="2"
+                    sortable="false"
+                    />
+                <ext-column text="Stock Price" flex="2">
+                    <columns>
+                        <ext-column
+                            text="Price"
+                            dataIndex="price"
+                            flex="1"
+                            sortable="true"
+                            renderer="Ext.util.Format.usMoney"
+                            />
+                        <ext-column
+                            text="Change"
+                            dataIndex="change"
+                            flex="1"
+                            sortable="true"
+                            renderer="change"
+                            />
+                        <ext-column
+                            text="Change %"
+                            dataIndex="pctChange"
+                            flex="1"
+                            sortable="true"
+                            renderer="pctChange"
+                            />
+                    </columns>
+                </ext-column>
+                <ext-dateColumn
+                    text="Last Updated"
+                    dataIndex="lastChange"
+                    flex="1"
+                    sortable="true"
+                    format="yyyy-MM-dd"
+                    />
+            </columns>
+        </ext-gridPanel>
+    </body>
+</html>

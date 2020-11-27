@@ -1,0 +1,58 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.kitchen_sink.toolbars.basic_toolbar.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Basic Toolbar - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <ext-viewport>
+            <layout>
+                <ext-vboxLayout align="Middle" pack="Center" />
+            </layout>
+            <items>
+                <ext-toolbar>
+                    <items>
+                        <ext-splitButton text="Menu Button" iconCls="x-md md-icon-apps">
+                            <menu>
+                                <ext-menu>
+                                    <items>
+                                        <ext-menuItem text="Menu Button 1" />
+                                    </items>
+                                </ext-menu>
+                            </menu>
+                        </ext-splitButton>
+                        <ext-toolbarSeparator />
+                        <ext-splitButton text="Cut" iconCls="x-md md-icon-content-cut">
+                            <menu>
+                                <ext-menu>
+                                    <items>
+                                        <ext-menuItem text="Cut Menu Item" />
+                                    </items>
+                                </ext-menu>
+                            </menu>
+                        </ext-splitButton>
+                        <ext-button text="Copy" iconCls="x-md md-icon-content-copy" />
+                        <ext-button text="Paste" iconCls="x-md md-icon-content-paste">
+                            <menu>
+                                <ext-menu>
+                                    <items>
+                                        <ext-menuItem text="Paste Menu Item" />
+                                    </items>
+                                </ext-menu>
+                            </menu>
+                        </ext-button>
+                        <ext-toolbarSeparator />
+                        <ext-button text="Format" iconCls="x-md md-icon-edit" />
+                    </items>
+                </ext-toolbar>
+            </items>
+        </ext-viewport>
+    </body>
+</html>

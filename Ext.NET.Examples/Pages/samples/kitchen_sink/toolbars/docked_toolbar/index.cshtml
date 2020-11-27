@@ -1,0 +1,122 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.kitchen_sink.toolbars.docked_toolbar.IndexModel
+@{
+    Layout = null;
+    var HTML = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Docked Toolbar - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <ext-viewport>
+            <layout>
+                <ext-vboxLayout align="Middle" pack="Center" />
+            </layout>
+            <items>
+                <ext-container marginAsString="0 0 10 0" style="background: transparent;">
+                    <layout>
+                        <ext-hboxLayout align="Middle" pack="Center" />
+                    </layout>
+                    <items>
+                        <ext-panel
+                            title="Top"
+                            frame="true"
+                            width="360"
+                            height="270"
+                            bodyPadding="18"
+                            margin="10"
+                            html=@HTML>
+                            <dockedItems>
+                                <ext-toolbar dock="Top">
+                                    <items>
+                                        <ext-button iconCls="x-md md-icon-apps" />
+                                        <ext-toolbarSeparator />
+                                        <ext-button iconCls="x-md md-icon-add" />
+                                        <ext-button iconCls="x-md md-icon-content-paste" />
+                                        <ext-toolbarSeparator />
+                                        <ext-button iconCls="x-md md-icon-edit" />
+                                    </items>
+                                </ext-toolbar>
+                            </dockedItems>
+                        </ext-panel>
+                        <ext-panel
+                            title="Right"
+                            frame="true"
+                            width="360"
+                            height="270"
+                            bodyPadding="18"
+                            margin="10"
+                            html=@HTML>
+                            <dockedItems>
+                                <ext-toolbar dock="Right">
+                                    <items>
+                                        <ext-button iconCls="x-md md-icon-apps" />
+                                        <ext-toolbarSeparator />
+                                        <ext-button iconCls="x-md md-icon-add" />
+                                        <ext-button iconCls="x-md md-icon-content-paste" />
+                                        <ext-toolbarSeparator />
+                                        <ext-button iconCls="x-md md-icon-edit" />
+                                    </items>
+                                </ext-toolbar>
+                            </dockedItems>
+                        </ext-panel>
+                    </items>
+                </ext-container>
+                <ext-container marginAsString="0 0 10 0" style="background: transparent;">
+                    <layout>
+                        <ext-hboxLayout align="Middle" pack="Center" />
+                    </layout>
+                    <items>
+                        <ext-panel
+                            title="Left"
+                            frame="true"
+                            width="360"
+                            height="270"
+                            bodyPadding="18"
+                            margin="10"
+                            html=@HTML>
+                            <dockedItems>
+                                <ext-toolbar dock="Left">
+                                    <items>
+                                        <ext-button iconCls="x-md md-icon-apps" />
+                                        <ext-toolbarSeparator />
+                                        <ext-button iconCls="x-md md-icon-add" />
+                                        <ext-button iconCls="x-md md-icon-content-paste" />
+                                        <ext-toolbarSeparator />
+                                        <ext-button iconCls="x-md md-icon-edit" />
+                                    </items>
+                                </ext-toolbar>
+                            </dockedItems>
+                        </ext-panel>
+                        <ext-panel
+                            title="Bottom"
+                            frame="true"
+                            width="360"
+                            height="270"
+                            bodyPadding="18"
+                            margin="10"
+                            html=@HTML>
+                            <dockedItems>
+                                <ext-toolbar dock="Bottom">
+                                    <items>
+                                        <ext-button iconCls="x-md md-icon-apps" />
+                                        <ext-toolbarSeparator />
+                                        <ext-button iconCls="x-md md-icon-add" />
+                                        <ext-button iconCls="x-md md-icon-content-paste" />
+                                        <ext-toolbarSeparator />
+                                        <ext-button iconCls="x-md md-icon-edit" />
+                                    </items>
+                                </ext-toolbar>
+                            </dockedItems>
+                        </ext-panel>
+                    </items>
+                </ext-container>
+            </items>
+        </ext-viewport>
+    </body>
+</html>

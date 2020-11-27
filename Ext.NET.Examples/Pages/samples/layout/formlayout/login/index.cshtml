@@ -1,0 +1,86 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.layout.formlayout.login.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Simple Login Form with Ajax Submit - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>
+            Login Form with DirectEvent Click
+        </h1>
+
+        <ext-button id="Button1" text="Logout" iconCls="x-md md-icon-lock-open">
+            <listeners>
+                <click handler="App.Window1.show();" />
+            </listeners>
+        </ext-button>
+
+        <ext-label id="lblMessage" />
+
+        <ext-window
+            id="Window1"
+            closable="false"
+            resizable="false"
+            autoShow="true"
+            iconCls="x-md md-icon-lock"
+            title="Login"
+            draggable="false"
+            width="360"
+            modal="true"
+            bodyPadding="18"
+            layout="Form">
+            <items>
+                <ext-textField
+                    id="txtUsername"
+                    fieldLabel="Username"
+                    allowBlank="false"
+                    blankText="Your username is required."
+                    value=@("demo")
+                    />
+                <ext-textField
+                    id="txtPassword"
+                    inputType="Password"
+                    fieldLabel="Password"
+                    allowBlank="false"
+                    blankText="Your password is required."
+                    value=@("demo")
+                    />
+            </items>
+            <buttons>
+                <ext-button id="btnLogin" text="Login" iconCls="x-md md-icon-check-circle-outline">
+                    <listeners>
+                        <click handler="
+                        if (!App.txtUsername.validate() || !App.txtPassword.validate()) {
+                            Ext.Msg.alert('Error','The Username and Password fields are both required');
+                            // return false to prevent the btnLogin_Click Ajax Click event from firing.
+                            return false;
+                        }" />
+                    </listeners>
+                    <directEvents>
+                        <click pageHandler="Login_Click">
+                            <eventMask>
+                                <ext-eventMask showMask="true" msg="Verifying..." minDelay="500" />
+                            </eventMask>
+                            <extraParams>
+                                <ext-add key="username" value="App.txtUsername.getValue()" mode="Raw" />
+                                <ext-add key="password" value="App.txtPassword.getValue()" mode="Raw" />
+                            </extraParams>
+                        </click>
+                    </directEvents>
+                </ext-button>
+                <ext-button id="btnCancel" text="Cancel" iconCls="x-md md-icon-cancel">
+                    <listeners>
+                        <click handler="App.Window1.hide();App.lblMessage.setText('LOGIN CANCELED')" />
+                    </listeners>
+                </ext-button>
+            </buttons>
+        </ext-window>
+    </body>
+</html>

@@ -1,0 +1,119 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.window.basic.window_variations.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Windows Example - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>
+            Window Variations
+        </h1>
+
+        <p>
+            This illustrates the <code>headerPosition</code> config of Panels, and also relative
+            z-index management.
+        </p>
+
+        <p>
+            The third Window owns two floating Windows where z-indices are managed relative to its
+            z-index. When that Window is occluded by another Window, and you click to bring it to
+            the front, both the dependent Windows move to the front too.
+        </p>
+
+        <p>
+            Constraining Windows are also demonstrated.
+        </p>
+
+        <ext-window
+            title="Constraining Window"
+            width="480"
+            height="270"
+            autoShow="true"
+            x="480"
+            y="600"
+            closable="false"
+            plain="true"
+            layout="Fit">
+            <items>
+                <ext-window
+                    title="Constrained Window"
+                    width="270"
+                    height="180"
+                    autoShow="true"
+                    x="20"
+                    y="20"
+                    constrain="true"
+                    layout="Fit">
+                    <items>
+                        <ext-panel />
+                    </items>
+                </ext-window>
+                <ext-window
+                    title="Constrain Header"
+                    width="270"
+                    height="180"
+                    autoShow="true"
+                    x="120"
+                    y="120"
+                    constrainHeader="true"
+                    layout="Fit">
+                    <items>
+                        <ext-panel />
+                    </items>
+                </ext-window>
+                <ext-panel />
+            </items>
+        </ext-window>
+
+        <ext-window
+            title="Left Header"
+            width="480"
+            height="270"
+            autoShow="true"
+            x="20"
+            y="270"
+            plain="true"
+            headerPosition="Left"
+            layout="Fit">
+            <items>
+                <ext-panel />
+            </items>
+        </ext-window>
+
+        <ext-window
+            title="Right Header"
+            width="480"
+            height="270"
+            autoShow="true"
+            x="480"
+            y="270"
+            headerPosition="Right"
+            layout="Fit">
+            <items>
+                <ext-panel />
+            </items>
+        </ext-window>
+
+        <ext-window
+            title="Bottom Header"
+            width="480"
+            height="270"
+            autoShow="true"
+            x="100"
+            y="480"
+            plain="true"
+            headerPosition="Bottom"
+            layout="Fit">
+            <items>
+                <ext-panel />
+            </items>
+        </ext-window>
+    </body>
+</html>

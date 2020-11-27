@@ -1,0 +1,74 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.layout.borderlayout.collapsed_region_image.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Image on Collapsed BorderLayout Region - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+        <style>
+            #WestPanel-placeholder-innerCt {
+                background : url(/resources/images/samples/collapsed-west.png) no-repeat center;
+            }
+
+            #SouthPanel-placeholder-innerCt {
+                background : url(/resources/images/samples/collapsed-south.png) no-repeat center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>
+            Image on Collapsed BorderLayout Region
+        </h1>
+        <ext-window
+            title="Collapsed Region Image"
+            width="720"
+            height="480"
+            autoShow="true"
+            closable="false"
+            layout="Border">
+            <items>
+                <ext-panel
+                    id="WestPanel"
+                    title="Navigation"
+                    region="West"
+                    rounded="false"
+                    collapsible="true"
+                    width="270"
+                    titleCollapse="false"
+                    floatable="false"
+                    collapsed="true"
+                    bodyPadding="18"
+                    html="Collapse Panel to see image">
+                    <listeners>
+                        <afterRender handler="this.setTitle('');" />
+                        <beforeCollapse handler="this.setTitle('');" />
+                        <beforeExpand handler="this.setTitle(this.initialConfig.title);" />
+                    </listeners>
+                </ext-panel>
+                <ext-panel region="Center" title="Center" rounded="false" />
+                <ext-panel
+                    id="SouthPanel"
+                    title="Footer"
+                    region="South"
+                    rounded="false"
+                    collapsible="true"
+                    minHeight="180"
+                    height="180"
+                    titleCollapse="false"
+                    floatable="false"
+                    collapsed="true">
+                    <listeners>
+                        <afterRender handler="this.setTitle('');" />
+                        <beforeCollapse handler="this.setTitle('');" />
+                        <beforeExpand handler="this.setTitle(this.initialConfig.title);" />
+                    </listeners>
+                </ext-panel>
+            </items>
+        </ext-window>
+    </body>
+</html>

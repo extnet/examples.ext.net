@@ -1,0 +1,41 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.layout.absolutelayout.basic.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            AbsoluteLayout - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <ext-viewport layout="Absolute">
+            <items>
+                <ext-panel
+                    bodyPadding="18"
+                    width="270"
+                    height="180"
+                    frame="true"
+                    title="Panel 1"
+                    x:raw-x="50"
+                    x:raw-y="50"
+                    html="Positioned at x:50, y:50"
+                    />
+                <ext-panel
+                    bodyPadding="18"
+                    width="270"
+                    height="180"
+                    someProp="true"
+                    frame="true"
+                    title="Panel 2"
+                    x:raw-x="180"
+                    x:raw-y="180"
+                    html="Positioned at <code>x:180</code>, <code>y:180</code>"
+                    />
+            </items>
+        </ext-viewport>
+    </body>
+</html>

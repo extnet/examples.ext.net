@@ -1,0 +1,75 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.layout.tablelayout.simple_in_markup.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Simple TableLayout in Markup - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+        <style>
+            #pnlTableLayout .x-table-layout {
+                padding : 5px;
+            }
+            #pnlTableLayout .x-table-layout td {
+                font-size : 11px;
+                padding : 5px;
+                vertical-align : top;
+            }
+        </style>
+    </head>
+    <body>
+        <ext-viewport id="Viewport1" layout="Border">
+            <items>
+                <ext-panel
+                    id="pnlTableLayout"
+                    region="Center"
+                    frame="true"
+                    title="Table Layout"
+                    bodyPadding="18"
+                    layout="Table">
+                    <layout>
+                        <ext-tableLayout columns="4" />
+                    </layout>
+                    <defaults>
+                        <ext-add key="bodyPadding" value="18" mode="Raw" />
+                        <ext-add key="frame" value="true" mode="Raw" />
+                    </defaults>
+                    <items>
+                        <ext-panel
+                            title="Lots of Spanning"
+                            height="320"
+                            html="Row spanning"
+                            x:raw-rowspan="3"
+                            />
+                        <ext-panel title="Basic Table Cell" height="105" html="Basic panel in a table cell" />
+                        <ext-panel header="false" height="105" html="Plain panel" />
+                        <ext-panel
+                            x:raw-rowspan="2"
+                            title="Another Cell"
+                            width="480"
+                            height="220"
+                            html="Row spanning"
+                            />
+                        <ext-panel
+                            x:raw-colspan="2"
+                            height="100"
+                            header="false"
+                            html="Plain cell spanning two columns"
+                            />
+                        <ext-panel
+                            x:raw-colspan="3"
+                            height="85"
+                            title="More Column Spanning"
+                            html="Spanning three columns"
+                            />
+                        <ext-panel x:raw-colspan="4" title="Spanning All Columns" html="Spanning all columns" />
+                    </items>
+                </ext-panel>
+            </items>
+        </ext-viewport>
+    </body>
+</html>

@@ -1,0 +1,180 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.buttons.basic.segmentedbutton.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            SegmentedButton Variations - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>
+            Segmented buttons
+        </h1>
+
+        <p>
+            Segmented buttons are containers with regular buttons inside with special styling and
+            options added. By default, all the child buttons will be part of a
+            <code>toggleGroup</code>, but this behaviour can be customized using the
+            <code>allowToggle</code> and <code>allowMultiple</code> config options.
+        </p>
+
+        <ext-container layout="Form">
+            <items>
+                <ext-fieldContainer fieldLabel="Toggle Group">
+                    <items>
+                        <ext-segmentedButton>
+                            <items>
+                                <ext-button text="Option One" />
+                                <ext-button text="Option Two" pressed="true" />
+                                <ext-button text="Option Three" />
+                            </items>
+                        </ext-segmentedButton>
+                    </items>
+                </ext-fieldContainer>
+                <ext-fieldContainer fieldLabel="Multiple Toggle">
+                    <items>
+                        <ext-segmentedButton allowMultiple="true">
+                            <items>
+                                <ext-button text="Option One" />
+                                <ext-button text="Option Two" />
+                                <ext-button text="Option Three" />
+                            </items>
+                        </ext-segmentedButton>
+                    </items>
+                </ext-fieldContainer>
+                <ext-fieldContainer fieldLabel="No Toggle">
+                    <items>
+                        <ext-segmentedButton allowToggle="false">
+                            <items>
+                                <ext-button text="Option One" />
+                                <ext-button text="Option Two" />
+                                <ext-button text="Option Three" />
+                            </items>
+                        </ext-segmentedButton>
+                    </items>
+                </ext-fieldContainer>
+                <ext-fieldContainer fieldLabel="Icons and Arrows">
+                    <items>
+                        <ext-segmentedButton allowToggle="false">
+                            <items>
+                                <ext-button text="Button" iconCls="x-md md-icon-add-circle-outline" />
+                                <ext-button text="Menu Button">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Menu Item 1" />
+                                                <ext-menuItem text="Menu Item 2" />
+                                                <ext-menuItem text="Menu Item 3" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-button>
+                                <ext-splitButton text="Split Button">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Menu Item 1" />
+                                                <ext-menuItem text="Menu Item 2" />
+                                                <ext-menuItem text="Menu Item 3" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-splitButton>
+                            </items>
+                        </ext-segmentedButton>
+                    </items>
+                </ext-fieldContainer>
+            </items>
+        </ext-container>
+
+        <h2>
+            Vertical
+        </h2>
+
+        <p>
+            Aligning segmented buttons vertically is a simple as setting the
+            <code>vertical="true"</code> config.
+        </p>
+
+        <ext-container layout="Column">
+            <defaults>
+                <ext-add key="labelAlign" value="top" />
+                <ext-add key="margin" value="0 20 0 0" />
+            </defaults>
+            <items>
+                <ext-fieldContainer fieldLabel="Toggle Group">
+                    <items>
+                        <ext-segmentedButton vertical="true" width="140">
+                            <items>
+                                <ext-button text="Option One" />
+                                <ext-button text="Option Two" pressed="true" />
+                                <ext-button text="Option Three" />
+                            </items>
+                        </ext-segmentedButton>
+                    </items>
+                </ext-fieldContainer>
+                <ext-fieldContainer fieldLabel="Multiple Toggle">
+                    <items>
+                        <ext-segmentedButton
+                            allowMultiple="true"
+                            vertical="true"
+                            width="140">
+                            <items>
+                                <ext-button text="Option One" />
+                                <ext-button text="Option Two" />
+                                <ext-button text="Option Three" />
+                            </items>
+                        </ext-segmentedButton>
+                    </items>
+                </ext-fieldContainer>
+                <ext-fieldContainer fieldLabel="No Toggle">
+                    <items>
+                        <ext-segmentedButton allowToggle="false" vertical="true" width="140">
+                            <items>
+                                <ext-button text="Option One" />
+                                <ext-button text="Option Two" />
+                                <ext-button text="Option Three" />
+                            </items>
+                        </ext-segmentedButton>
+                    </items>
+                </ext-fieldContainer>
+                <ext-fieldContainer fieldLabel="Icons and Arrows">
+                    <items>
+                        <ext-segmentedButton allowToggle="false" vertical="true">
+                            <items>
+                                <ext-button text="Button" iconCls="x-md md-icon-add-circle-outline" width="140" />
+                                <ext-button text="Menu Button" width="140">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Menu Item 1" />
+                                                <ext-menuItem text="Menu Item 2" />
+                                                <ext-menuItem text="Menu Item 3" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-button>
+                                <ext-splitButton text="Split Button" width="140">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Menu Item 1" />
+                                                <ext-menuItem text="Menu Item 2" />
+                                                <ext-menuItem text="Menu Item 3" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-splitButton>
+                            </items>
+                        </ext-segmentedButton>
+                    </items>
+                </ext-fieldContainer>
+            </items>
+        </ext-container>
+    </body>
+</html>

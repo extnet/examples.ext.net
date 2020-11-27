@@ -1,0 +1,114 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.gridpanel.paging_and_sorting.page.IndexModel
+@{
+    Layout = null;
+
+    // Because RowBody feature does not support 'getAdditionalData'.
+    var gridFeaturesBlock = @"
+        [Ext.create(""Ext.grid.feature.RowBody"", {
+            ftype: ""rowbody"",
+            getAdditionalData: function(data, idx, record, orig) {
+                return {
+                    rowBodyColspan: record.getFields().length,
+                    rowBody: '<p>' + data.Notes + '</p>'
+                };
+            }
+        })]";
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            GridPanel with Remote Paging and Sorting - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+        <style>
+            .x-grid-td-Common .x-grid-cell-inner {
+                font-family : tahoma, verdana;
+                display : block;
+                font-weight : normal;
+                font-style : normal;
+                color : #385F95;
+                white-space : normal;
+            }
+            .x-grid-rowbody p {
+                margin : 5px 5px 10px 5px !important;
+                width : 99%;
+                color : Gray;
+                font-size: small;
+                line-height: unset;
+            }
+        </style>
+
+        <script type="text/javascript">
+            var commonNameRenderer = function (value, metadata, record, rowIndex, colIndex, store) {
+                return "<b>" + value + "</b>";
+            };
+        </script>
+    </head>
+    <body>
+        <ext-gridPanel
+            id="GridPanel1"
+            title="Plants"
+            frame="true"
+            height="524">
+            <store>
+                <ext-store
+                    id="Store1"
+                    remoteSort="true"
+                    pageSize="3"
+                    autoLoad="true">
+                    <proxy>
+                        <ext-ajaxProxy url="Page/ReadData">
+                            <reader>
+                                <ext-jsonReader x-rootProperty="Data" x-totalProperty="TotalRecords" />
+                            </reader>
+                        </ext-ajaxProxy>
+                    </proxy>
+                    <model>
+                        <ext-model>
+                            <fields>
+                                <ext-dataField name="Common" type="String" />
+                                <ext-dataField name="Botanical" type="String" />
+                                <ext-dataField name="Zone" type="Int" />
+                                <ext-dataField name="ColorCode" type="String" />
+                                <ext-dataField name="Price" type="Float" />
+                                <ext-dataField name="Availability" type="Date" />
+                                <ext-dataField name="Indoor" type="Bool" />
+                                <ext-dataField name="Notes" type="String" />
+                            </fields>
+                        </ext-model>
+                    </model>
+                    <sorters>
+                        <ext-sorter property="Common" direction="ASC" />
+                    </sorters>
+                </ext-store>
+            </store>
+            <columns>
+                <ext-column dataIndex="Common" text="Common Name" flex="1" renderer="commonNameRenderer" />
+                <ext-column dataIndex="Botanical" text="Botanical" width="230" />
+                <ext-column dataIndex="Light" text="Light" width="130" />
+                <ext-column dataIndex="Price" text="Price" width="100" align="End" />
+                <ext-dateColumn dataIndex="Availability" text="Available" width="117" format="yyyy-MM-dd" />
+                <ext-column dataIndex="Indoor" text="Indoor?" width="90" />
+            </columns>
+            <viewConfig>
+                <ext-tableView>
+                    <customConfig>
+                        <ext-add key="getRowClass" value="function(record, index, rowParams, store) { return 'x-grid-row-expanded'; }" mode="Raw" />
+                    </customConfig>
+                    <selectionModel>
+                        <ext-rowSelectionModel mode="MULTI" />
+                    </selectionModel>
+                </ext-tableView>
+            </viewConfig>
+            <customConfig>
+                <ext-add key="features" value="@gridFeaturesBlock" mode="Raw" />
+            </customConfig>
+            <bbar>
+                <ext-pagingToolbar displayInfo="true" displayMsg="Displaying plants {0} - {1} of {2}" emptyMsg="No plants to display" />
+            </bbar>
+        </ext-gridPanel>
+    </body>
+</html>

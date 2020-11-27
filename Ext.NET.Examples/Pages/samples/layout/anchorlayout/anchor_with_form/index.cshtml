@@ -1,0 +1,36 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.layout.anchorlayout.anchor_with_form.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Anchor Layout with Form - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+            <ext-window
+                title="Resize Me"
+                width="500"
+                height="480"
+                minWidth="300"
+                minHeight="200"
+                autoShow="true"
+                bodyPadding="18"
+                buttonAlign="Center"
+                layout="Anchor">
+                <items>
+                    <ext-textField fieldLabel="Send to" anchor="100%" />
+                    <ext-textField fieldLabel="Subject" anchor="100%" />
+                    <ext-textArea hideLabel="true" anchor="100% -80" />
+                </items>
+                <buttons>
+                    <ext-button text="Save" iconCls="x-md md-icon-save" />
+                    <ext-button text="Cancel" iconCls="x-md md-icon-cancel" />
+                </buttons>
+            </ext-window>
+    </body>
+</html>

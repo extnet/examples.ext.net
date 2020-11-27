@@ -1,0 +1,27 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.layout.tablelayout.simple_in_codebehind.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Simple TableLayout - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+        <style>
+            #pnlTableLayout .x-table-layout {
+                padding : 5px;
+            }
+            #pnlTableLayout .x-table-layout td {
+                font-size : 11px;
+                padding : 5px;
+                vertical-align : top;
+            }
+        </style>
+    </head>
+    <body>
+        <ext-viewport model="Model.Viewport1" />
+    </body>
+</html>

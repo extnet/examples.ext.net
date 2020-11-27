@@ -1,0 +1,44 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.chart.miscellaneous.basic.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Simple Cartesian Column Chart - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>
+            Simple Cartesian Column Chart
+        </h1>
+
+        <ext-cartesianChart title="Sample Data" width="600" height="480">
+            <store>
+                <ext-store data="Model.ChartData">
+                    <fields>
+                        <ext-datafield name="name" />
+                        <ext-dataField name="value" />
+                    </fields>
+                </ext-store>
+            </store>
+            <axes>
+                <ext-numericAxis
+                    position="Left"
+                    fields="value"
+                    grid="true"
+                    title="Percent"
+                    minimum="0"
+                    />
+                <ext-categoryAxis position="Bottom" fields="name" title="Month of the Year" />
+            </axes>
+            <series>
+                <ext-barSeries highlight="true" xField="name" yField="value" />
+            </series>
+        </ext-cartesianChart>
+
+    </body>
+</html>

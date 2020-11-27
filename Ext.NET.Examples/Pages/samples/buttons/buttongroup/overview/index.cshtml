@@ -1,0 +1,482 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.buttons.buttongroup.overview.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Toolbar ButtonGroups - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>
+            &lt;ext-buttonGroup>
+        </h1>
+        <p>
+            The <code>&lt;ext-buttonGroup&gt;</code> provides a container for arranging a group of
+            related Buttons in a tabular manner.
+        </p>
+
+        <ext-panel
+            title="Basic"
+            width="960"
+            height="270"
+            frame="true"
+            marginAsString="40 0 20 0"
+            bodyPadding="18"
+            scrollable="true">
+            <tbar>
+                <ext-toolbar>
+                    <items>
+                        <ext-splitButton text="Menu Button" iconCls="x-md md-icon-check-circle-outline">
+                            <menu>
+                                <ext-menu plain="true">
+                                    <items>
+                                        <ext-menuItem text="Menu Button 1" />
+                                    </items>
+                                </ext-menu>
+                            </menu>
+                        </ext-splitButton>
+                        <ext-toolbarSeparator />
+                        <ext-splitButton text="Cut" iconCls="x-md md-icon-content-cut">
+                            <menu>
+                                <ext-menu plain="true">
+                                    <items>
+                                        <ext-menuItem text="Cut Menu Item" />
+                                    </items>
+                                </ext-menu>
+                            </menu>
+                        </ext-splitButton>
+                        <ext-button text="Copy" iconCls="x-md md-icon-content-copy" />
+                        <ext-button text="Paste" iconCls="x-md md-icon-content-paste">
+                            <menu>
+                                <ext-menu plain="true">
+                                    <items>
+                                        <ext-menuItem text="Paste Menu Item" />
+                                    </items>
+                                </ext-menu>
+                            </menu>
+                        </ext-button>
+                        <ext-toolbarSeparator />
+                        <ext-button text="Format" iconCls="x-md md-icon-create" />
+                    </items>
+                </ext-toolbar>
+            </tbar>
+        </ext-panel>
+        <ext-panel
+            title="Multiple Columns - bottom title"
+            width="960"
+            height="270"
+            frame="true"
+            marginAsString="0 0 20 0"
+            bodyPadding="18"
+            scrollable="true">
+            <tbar>
+                <ext-toolbar>
+                    <items>
+                        <ext-buttonGroup title="Clipboard" headerPosition="Bottom" columns="2">
+                            <items>
+                                <ext-splitButton text="Menu Button" iconCls="x-md md-icon-check-circle-outline">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Menu Button 1" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-splitButton>
+                                <ext-splitButton text="Cut" iconCls="x-md md-icon-content-cut">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Cut Menu Item" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-splitButton>
+                                <ext-button text="Copy" iconCls="x-md md-icon-content-copy" />
+                                <ext-button text="Paste" iconCls="x-md md-icon-content-paste">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Paste Menu Item" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-button>
+                                <ext-button text="Format" iconCls="x-md md-icon-create" />
+                            </items>
+                        </ext-buttonGroup>
+                        <ext-buttonGroup title="Other Actions" headerPosition="Bottom" columns="2">
+                            <items>
+                                <ext-splitButton text="Menu Button" iconCls="x-md md-icon-check-circle-outline">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Menu Button 1" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-splitButton>
+                                <ext-splitButton text="Cut" iconCls="x-md md-icon-content-cut">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Cut Menu Item" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-splitButton>
+                                <ext-button text="Copy" iconCls="x-md md-icon-content-copy" />
+                                <ext-button text="Paste" iconCls="x-md md-icon-content-paste">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Paste Menu Item" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-button>
+                                <ext-button text="Format" iconCls="x-md md-icon-create" />
+                            </items>
+                        </ext-buttonGroup>
+                    </items>
+                </ext-toolbar>
+            </tbar>
+        </ext-panel>
+        <ext-panel
+            title="Multiple Columns - No titles & double stack"
+            width="960"
+            height="270"
+            frame="true"
+            marginAsString="0 0 20 0"
+            bodyPadding="18"
+            scrollable="true">
+            <tbar>
+                <ext-toolbar>
+                    <items>
+                        <ext-buttonGroup columns="3">
+                            <items>
+                                <ext-splitButton text="Menu Button" iconCls="x-md md-icon-check-circle-outline">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Menu Button 1" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-splitButton>
+                                <ext-splitButton text="Cut" iconCls="x-md md-icon-content-cut">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Cut Menu Item" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-splitButton>
+                                <ext-button text="Copy" iconCls="x-md md-icon-content-copy" />
+                                <ext-button text="Paste" iconCls="x-md md-icon-content-paste">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Paste Menu Item" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-button>
+                                <ext-button text="Format" iconCls="x-md md-icon-create" />
+                            </items>
+                        </ext-buttonGroup>
+                        <ext-buttonGroup columns="3">
+                            <items>
+                                <ext-splitButton text="Menu Button" iconCls="x-md md-icon-check-circle-outline">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Menu Button 1" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-splitButton>
+                                <ext-splitButton text="Cut" iconCls="x-md md-icon-content-cut">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Cut Menu Item" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-splitButton>
+                                <ext-button text="Copy" iconCls="x-md md-icon-content-copy" />
+                                <ext-button text="Paste" iconCls="x-md md-icon-content-paste">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Paste Menu Item" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-button>
+                                <ext-button text="Format" iconCls="x-md md-icon-create" />
+                            </items>
+                        </ext-buttonGroup>
+                    </items>
+                </ext-toolbar>
+            </tbar>
+        </ext-panel>
+        <ext-panel
+            title="Mix and Match sizes"
+            width="960"
+            height="270"
+            frame="true"
+            marginAsString="0 0 20 0"
+            bodyPadding="18"
+            scrollable="true">
+            <tbar>
+                <ext-toolbar>
+                    <items>
+                        <ext-buttonGroup title="Clipboard" columns="3">
+                            <items>
+                                <ext-button
+                                    text="Paste"
+                                    iconCls="x-md md-icon-content-paste"
+                                    scale="Large"
+                                    iconAlign="Top"
+                                    cls="x-btn-as-arrow"
+                                    rowspan="3"
+                                    />
+                                <ext-splitButton
+                                    text="Menu Button"
+                                    iconCls="x-md md-icon-check-circle-outline"
+                                    iconAlign="Top"
+                                    arrowAlign="Bottom"
+                                    scale="Large"
+                                    rowspan="3">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Menu Button 1" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-splitButton>
+                                <ext-splitButton text="Cut" iconCls="x-md md-icon-content-cut">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Cut Menu Item" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-splitButton>
+                                <ext-button text="Copy" iconCls="x-md md-icon-content-copy" />
+                                <ext-button text="Format" iconCls="x-md md-icon-create" />
+                            </items>
+                        </ext-buttonGroup>
+                        <ext-buttonGroup title="Other Actions" columns="3">
+                            <items>
+                                <ext-button
+                                    text="Paste"
+                                    iconCls="x-md md-icon-content-paste"
+                                    scale="Large"
+                                    iconAlign="Top"
+                                    cls="x-btn-as-arrow"
+                                    rowspan="3"
+                                    />
+                                <ext-splitButton
+                                    text="Menu Button"
+                                    iconCls="x-md md-icon-check-circle-outline"
+                                    iconAlign="Top"
+                                    arrowAlign="Bottom"
+                                    scale="Large"
+                                    rowspan="3">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Menu Button 1" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-splitButton>
+                                <ext-splitButton text="Cut" iconCls="x-md md-icon-content-cut">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Cut Menu Item" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-splitButton>
+                                <ext-button text="Copy" iconCls="x-md md-icon-content-copy" />
+                                <ext-button text="Format" iconCls="x-md md-icon-create" />
+                            </items>
+                        </ext-buttonGroup>
+                    </items>
+                </ext-toolbar>
+            </tbar>
+        </ext-panel>
+        <ext-panel
+            title="Bottom Trigger"
+            width="960"
+            height="270"
+            frame="true"
+            marginAsString="0 0 20 0"
+            bodyPadding="18"
+            scrollable="true">
+            <tbar>
+                <ext-toolbar>
+                    <items>
+                        <ext-buttonGroup title="Clipboard">
+                            <defaults>
+                                <ext-add key="scale" value="medium" />
+                                <ext-add key="iconAlign" value="top" />
+                            </defaults>
+                            <items>
+                                <ext-splitButton text="Menu Button" iconCls="x-md md-icon-content-cut" arrowAlign="Bottom">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Menu Button 1" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-splitButton>
+                                <ext-splitButton text="Cut" iconCls="x-md md-icon-content-cut" arrowAlign="Bottom">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Cut Menu Item" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-splitButton>
+                                <ext-button text="Copy" iconCls="x-md md-icon-content-copy" cls="x-btn-as-arrow" />
+                                <ext-button text="Paste" iconCls="x-md md-icon-content-paste" arrowAlign="Bottom">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Paste Menu Item" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-button>
+                                <ext-button text="Format" iconCls="x-md md-icon-create" />
+                            </items>
+                        </ext-buttonGroup>
+                        <ext-buttonGroup title="Other Actions">
+                            <defaults>
+                                <ext-add key="scale" value="medium" />
+                                <ext-add key="iconAlign" value="top" />
+                            </defaults>
+                            <items>
+                                <ext-splitButton text="Menu Button" iconCls="x-md md-icon-check-circle-outline" arrowAlign="Bottom">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Menu Button 1" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-splitButton>
+                                <ext-splitButton text="Cut" iconCls="x-md md-icon-content-cut" arrowAlign="Bottom">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Cut Menu Item" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-splitButton>
+                                <ext-button text="Copy" iconCls="x-md md-icon-content-copy" cls="x-btn-as-arrow" />
+                                <ext-button text="Paste" iconCls="x-md md-icon-content-paste" arrowAlign="Bottom">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Paste Menu Item" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-button>
+                                <ext-button text="Format" iconCls="x-md md-icon-create" />
+                            </items>
+                        </ext-buttonGroup>
+                    </items>
+                </ext-toolbar>
+            </tbar>
+        </ext-panel>
+        <ext-panel
+            title="Medium Buttons"
+            width="960"
+            height="270"
+            frame="true"
+            marginAsString="0 0 20 0"
+            bodyPadding="18"
+            scrollable="true">
+            <tbar>
+                <ext-toolbar>
+                    <items>
+                        <ext-buttonGroup>
+                            <items>
+                                <ext-button text="Cut" iconCls="x-md md-icon-content-cut" scale="Medium" />
+                                <ext-button text="Copy" iconCls="x-md md-icon-content-copy" scale="Medium" />
+                                <ext-button text="Paste" iconCls="x-md md-icon-content-paste" scale="Medium">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Paste Menu Item" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-button>
+                            </items>
+                        </ext-buttonGroup>
+                        <ext-buttonGroup layout="Table">
+                            <items>
+                                <ext-button text="Format" iconCls="x-md md-icon-create" scale="Medium" />
+                            </items>
+                        </ext-buttonGroup>
+                    </items>
+                </ext-toolbar>
+            </tbar>
+        </ext-panel>
+        <ext-panel
+            title="Small Buttons"
+            width="960"
+            height="270"
+            frame="true"
+            marginAsString="0 0 20 0"
+            bodyPadding="18"
+            scrollable="true">
+            <tbar>
+                <ext-toolbar>
+                    <items>
+                        <ext-buttonGroup>
+                            <items>
+                                <ext-button text="Cut" iconCls="x-md md-icon-content-cut" />
+                                <ext-button text="Copy" iconCls="x-md md-icon-content-copy" />
+                                <ext-button text="Paste" iconCls="x-md md-icon-content-paste">
+                                    <menu>
+                                        <ext-menu plain="true">
+                                            <items>
+                                                <ext-menuItem text="Paste Menu Item" />
+                                            </items>
+                                        </ext-menu>
+                                    </menu>
+                                </ext-button>
+                            </items>
+                        </ext-buttonGroup>
+                        <ext-buttonGroup>
+                            <items>
+                                <ext-button text="Format" iconCls="x-md md-icon-create" />
+                            </items>
+                        </ext-buttonGroup>
+                    </items>
+                </ext-toolbar>
+            </tbar>
+        </ext-panel>
+    </body>
+</html>

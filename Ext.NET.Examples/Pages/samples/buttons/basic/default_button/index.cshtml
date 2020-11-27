@@ -1,0 +1,105 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.buttons.basic.default_button.IndexModel
+@{
+    Layout = null;
+}
+<html>
+    <head>
+        <title>
+            Default Button - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>
+            Default Button
+        </h1>
+
+        <ext-container layout="HBox">
+            <defaults>
+                <ext-add key="margin" value="0 20 20 0" />
+                <ext-add key="bodyPadding" value="18" mode="Raw" />
+                <ext-add key="width" value="400" mode="Raw" />
+                <ext-add key="frame" value="true" mode="Raw" />
+            </defaults>
+            <items>
+                <ext-formPanel title="Last Button by default">
+                    <items>
+                        <ext-textField fieldLabel="Item 1" />
+                        <ext-textField fieldLabel="Item 2" />
+                    </items>
+                    <buttons>
+                        <ext-button text="Button1" />
+                        <ext-button
+                            text="Button2"
+                            onClientClick="Ext.Msg.alert('ENTER', 'ENTER is intercepted by Button2');"
+                            iconCls="x-md md-icon-check-circle-outline"
+                            />
+                    </buttons>
+                </ext-formPanel>
+
+                <ext-formPanel title="Button by Index" defaultButton="1">
+                    <items>
+                        <ext-textField fieldLabel="Item 1" />
+                        <ext-textField fieldLabel="Item 2" />
+                    </items>
+                    <buttons>
+                        <ext-button text="Button1" />
+                        <ext-button
+                            text="Button2"
+                            onClientClick="Ext.Msg.alert('ENTER', 'ENTER is intercepted by Button2');"
+                            iconCls="x-md md-icon-check-circle-outline"
+                            />
+                        <ext-button text="Button3" />
+                        <ext-button text="Button4" />
+                    </buttons>
+                </ext-formPanel>
+            </items>
+        </ext-container>
+
+        <ext-container layout="HBox">
+            <defaults>
+                <ext-add key="margin" value="0 20 20 0" />
+                <ext-add key="bodyPadding" value="18" mode="Raw" />
+                <ext-add key="width" value="400" mode="Raw" />
+                <ext-add key="frame" value="true" mode="Raw" />
+            </defaults>
+            <items>
+                <ext-formPanel title="Button by ID" defaultButton="Button3">
+                    <items>
+                        <ext-textField fieldLabel="Item 1" />
+                        <ext-textField fieldLabel="Item 2" />
+                    </items>
+                    <buttons>
+                        <ext-button text="Button1" />
+                        <ext-button text="Button2" />
+                        <ext-button
+                            id="Button3"
+                            text="Button3"
+                            onClientClick="Ext.Msg.alert('ENTER', 'ENTER is intercepted by Button3');"
+                            iconCls="x-md md-icon-check-circle-outline"
+                            />
+                        <ext-button text="Button4" />
+                    </buttons>
+                </ext-formPanel>
+
+                <ext-formPanel title="Button by Selector" defaultButton="button[text=Button4]">
+                    <items>
+                        <ext-textField fieldLabel="Item 1" />
+                        <ext-textField fieldLabel="Item 2" />
+                    </items>
+                    <buttons>
+                        <ext-button text="Button1" />
+                        <ext-button text="Button2" />
+                        <ext-button text="Button3" />
+                        <ext-button
+                            text="Button4"
+                            onClientClick="Ext.Msg.alert('ENTER', 'ENTER is intercepted by Button4');"
+                            iconCls="x-md md-icon-check-circle-outline"
+                            />
+                    </buttons>
+                </ext-formPanel>
+            </items>
+        </ext-container>
+    </body>
+</html>

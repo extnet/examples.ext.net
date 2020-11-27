@@ -1,0 +1,331 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.layout.formlayout.overview.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            FormLayouts built in markup - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>
+            FormLayouts built in markup
+        </h1>
+
+        <h4>
+            Form1 - Very Simple
+        </h4>
+
+        <ext-formPanel
+            id="Panel1"
+            title="Simple Form"
+            bodyPaddingAsString="5 5 0"
+            width="360"
+            frame="true"
+            buttonAlign="Center"
+            layout="Form">
+            <fieldDefaults>
+                <ext-add key="msgTarget" value="side" />
+                <ext-add key="labelWidth" value="75" mode="Raw" />
+            </fieldDefaults>
+            <plugins>
+                @* <ext-dataTip /> *@
+            </plugins>
+            <items>
+                <ext-textField fieldLabel="First Name" allowBlank="false">
+                    <customConfig>
+                        <ext-add key="tooltip" value="Enter your first name" />
+                    </customConfig>
+                    @* <afterLabelTextTpl>
+                        <html>
+                            <span style="color:red;font-weight:bold" data-qtip="Required">
+                                *
+                            </span>
+                        </html>
+                    </afterLabelTextTpl> *@
+                </ext-textField>
+                <ext-textField fieldLabel="Last Name" allowBlank="false">
+                    <customConfig>
+                        <ext-add key="tooltip" value="Enter your last name" />
+                    </customConfig>
+                    @* <afterLabelTextTpl>
+                        <html>
+                            <span style="color:red;font-weight:bold" data-qtip="Required">
+                                *
+                            </span>
+                        </html>
+                    </afterLabelTextTpl> *@
+                </ext-textField>
+                <ext-textField fieldLabel="Company">
+                    <customConfig>
+                        <ext-add key="tooltip" value="Enter your employer's name" />
+                    </customConfig>
+                </ext-textField>
+                <ext-textField fieldLabel="Email" vtype="email" allowBlank="false">
+                    <customConfig>
+                        <ext-add key="tooltip" value="Enter your email address" />
+                    </customConfig>
+                    @* <afterLabelTextTpl>
+                        <html>
+                            <span style="color:red;font-weight:bold" data-qtip="Required">
+                                *
+                            </span>
+                        </html>
+                    </afterLabelTextTpl> *@
+                </ext-textField>
+                <ext-dateField fieldLabel="DOB">
+                    <customConfig>
+                        <ext-add key="tooltip" value="Enter your date of birth" />
+                    </customConfig>
+                </ext-dateField>
+                <ext-numberField minValue="0" maxValue="100" fieldLabel="Age">
+                    <customConfig>
+                        <ext-add key="tooltip" value="Enter your age" />
+                    </customConfig>
+                </ext-numberField>
+                <ext-timeField fieldLabel="Time" minTime="08:00" maxTime="18:00">
+                    <customConfig>
+                        <ext-add key="tooltip" value="Enter a time" />
+                    </customConfig>
+                    <listConfig>
+                        @* <plugins>
+                            @* <ext-dataTip>
+                                <tpl>
+                                    @* <html>
+                                        Select time {date:date("G:i")}
+                                    </html> * @
+                                </tpl>
+                            </ext-dataTip> * @
+                        </plugins> *@
+                    </listConfig>
+                </ext-timeField>
+            </items>
+            <buttons>
+                <ext-button text="Save" handler="this.up('form').getForm().isValid();" />
+                <ext-button text="Cancel" handler="this.up('form').getForm().reset();" />
+            </buttons>
+        </ext-formPanel>
+
+        <h4>
+            Form 2 - Adding fieldsets
+        </h4>
+
+        <ext-panel
+            id="Panel2"
+            title="Simple Form with FieldSets"
+            paddingAsString="5px 5px 0"
+            width="360"
+            frame="true"
+            buttonAlign="Center">
+            <items>
+                <ext-fieldSet
+                    checkboxToggle="true"
+                    title="User Information"
+                    collapsed="true"
+                    layout="Form">
+                    <defaults>
+                        <ext-add key="labelWidth" value="75" mode="Raw" />
+                    </defaults>
+                    <items>
+                        <ext-textField fieldLabel="First Name" allowBlank="false" />
+                        <ext-textField fieldLabel="Last Name" />
+                        <ext-textField fieldLabel="Company" />
+                        <ext-textField fieldLabel="Email" />
+                    </items>
+                </ext-fieldSet>
+                <ext-fieldSet collapsible="true" title="Phone Number" layout="Form">
+                    <defaults>
+                        <ext-add key="labelWidth" value="75" mode="Raw" />
+                    </defaults>
+                    <items>
+                        <ext-textField fieldLabel="Home" text="(888) 555-1212" />
+                        <ext-textField fieldLabel="Business" />
+                        <ext-textField fieldLabel="Mobile" />
+                        <ext-textField fieldLabel="Fax" />
+                    </items>
+                </ext-fieldSet>
+            </items>
+            <buttons>
+                <ext-button text="Save" />
+                <ext-button text="Cancel" />
+            </buttons>
+        </ext-panel>
+
+        <h4>
+            Form 3 - A little more complex
+        </h4>
+
+        <ext-panel
+            id="Panel3"
+            title="Multi Column, Nested Layouts and Anchoring"
+            frame="true"
+            paddingAsString="5px 5px 0"
+            width="960"
+            buttonAlign="Center">
+            <items>
+                <ext-container layout="Column">
+                    <items>
+                        <ext-container layout="Form" columnWidth=".5" padding="5">
+                            <items>
+                                <ext-textField fieldLabel="First Name" labelAlign="Top" />
+                                <ext-textField fieldLabel="Company" labelAlign="Top" />
+                            </items>
+                        </ext-container>
+                        <ext-container layout="Form" columnWidth=".5" padding="5">
+                            <items>
+                                <ext-textField fieldLabel="Last Name" labelAlign="Top" />
+                                <ext-textField fieldLabel="Email" labelAlign="Top" />
+                            </items>
+                        </ext-container>
+                    </items>
+                </ext-container>
+                <ext-container layout="Anchor">
+                    <items>
+                        <ext-htmlEditor
+                            height="180"
+                            fieldLabel="Biography"
+                            labelAlign="Top"
+                            padding="10"
+                            />
+                    </items>
+                </ext-container>
+            </items>
+            <buttons>
+                <ext-button text="Save" />
+                <ext-button text="Cancel" />
+            </buttons>
+        </ext-panel>
+
+        <h4>
+            Form 4 - Forms can be a TabPanel...
+        </h4>
+
+        <ext-panel
+            id="Panel4"
+            width="360"
+            buttonAlign="Center"
+            layout="Fit">
+            <items>
+                <ext-tabPanel activeTab="0">
+                    <items>
+                        <ext-panel title="Personal Details" bodyPadding="18" layout="Form">
+                            <defaults>
+                                <ext-add key="labelWidth" value="75" mode="Raw" />
+                            </defaults>
+                            <items>
+                                <ext-textField fieldLabel="First Name" allowBlank="false" />
+                                <ext-textField fieldLabel="Last Name" />
+                                <ext-textField fieldLabel="Company" />
+                                <ext-textField fieldLabel="Email" />
+                            </items>
+                        </ext-panel>
+                        <ext-panel title="Phone Numbers" bodyPadding="18" layout="Form">
+                            <defaults>
+                                <ext-add key="labelWidth" value="75" mode="Raw" />
+                            </defaults>
+                            <items>
+                                <ext-textField fieldLabel="Home" text="(888) 555-1212" />
+                                <ext-textField fieldLabel="Business" />
+                                <ext-textField fieldLabel="Mobile" />
+                                <ext-textField fieldLabel="Fax" />
+                            </items>
+                        </ext-panel>
+                    </items>
+                </ext-tabPanel>
+            </items>
+            <buttons>
+                <ext-button text="Save" />
+                <ext-button text="Cancel" />
+            </buttons>
+        </ext-panel>
+
+        <h4>
+            Form 5 - Form with TabPanel
+        </h4>
+
+        <ext-panel
+            id="Panel5"
+            title="Inner Tabs"
+            width="960"
+            bodyPadding="18"
+            buttonAlign="Center">
+            <items>
+                <ext-container>
+                    <items>
+                        <ext-container layout="Form" columnWidth=".5">
+                            <items>
+                                <ext-textField fieldLabel="First Name" labelAlign="Top" />
+                                <ext-textField fieldLabel="Company" labelAlign="Top" />
+                            </items>
+                        </ext-container>
+                        <ext-container layout="Form" columnWidth=".5">
+                            <items>
+                                <ext-textField fieldLabel="Last Name" labelAlign="Top" />
+                                <ext-textField fieldLabel="Email" labelAlign="Top" />
+                            </items>
+                        </ext-container>
+                    </items>
+                </ext-container>
+                <ext-tabPanel
+                    marginAsString="5px 0px 0px 0px"
+                    activeTab="0"
+                    plain="true"
+                    height="235">
+                    <items>
+                        <ext-panel title="Personal Details" bodyPadding="18" layout="Form">
+                            <defaults>
+                                <ext-add key="labelWidth" value="75" mode="Raw" />
+                                <ext-add key="labelAlign" value="top" />
+                            </defaults>
+                            <items>
+                                <ext-textField fieldLabel="First Name" allowBlank="false" width="230" />
+                                <ext-textField fieldLabel="Last Name" width="230" />
+                                <ext-textField fieldLabel="Company" width="230" />
+                                <ext-textField fieldLabel="Email" width="230" />
+                            </items>
+                        </ext-panel>
+                        <ext-panel title="Phone Numbers" bodyPadding="18" layout="Form">
+                            <defaults>
+                                <ext-add key="labelWidth" value="75" mode="Raw" />
+                                <ext-add key="labelAlign" value="top" />
+                            </defaults>
+                            <items>
+                                <ext-textField fieldLabel="Home" text="(888) 555-1212" width="230" />
+                                <ext-textField fieldLabel="Business" width="230" />
+                                <ext-textField fieldLabel="Mobile" width="230" />
+                                <ext-textField fieldLabel="Fax" width="230" />
+                            </items>
+                        </ext-panel>
+                        <ext-panel title="Biography" bodyPadding="18" layout="Fit">
+                            <items>
+                                <ext-htmlEditor />
+                            </items>
+                        </ext-panel>
+                        <ext-panel
+                            id="Tab4"
+                            title="Tab 4"
+                            layout="Form"
+                            bodyPadding="18">
+                            <defaults>
+                                <ext-add key="labelWidth" value="75" mode="Raw" />
+                                <ext-add key="labelAlign" value="top" />
+                            </defaults>
+                            <items>
+                                <ext-textField fieldLabel="Name" width="230" />
+                                <ext-textField fieldLabel="Age" width="230" />
+                            </items>
+                        </ext-panel>
+                    </items>
+                </ext-tabPanel>
+            </items>
+            <buttons>
+                <ext-button text="Save" />
+                <ext-button text="Cancel" />
+            </buttons>
+        </ext-panel>
+    </body>
+</html>

@@ -1,0 +1,59 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.layout.borderlayout.simple_in_markup.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Simple BorderLayout in Markup - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>
+            Simple BorderLayout in Markup
+        </h1>
+
+        <ext-window
+            id="Window1"
+            title="Simple Layout"
+            width="720"
+            height="480"
+            autoShow="true",
+            collapsible="true"
+            layout="Border">
+            <items>
+                <ext-panel
+                    region="West"
+                    title="Navigation"
+                    ui="Light"
+                    collapsible="true"
+                    x:raw-x:raw-split="true"
+                    minWidth="270"
+                    width="270"
+                    rounded="false"
+                    />
+                <ext-tabPanel region="Center" activeTab="0" rounded="false" plain="true">
+                    <items>
+                        <ext-panel
+                            id="Tab1"
+                            title="First Tab"
+                            bodyPadding="18"
+                            html="First Tab"
+                            rounded="false"
+                            />
+                        <ext-panel
+                            id="Tab2"
+                            title="Another Tab"
+                            bodyPadding="18"
+                            html="Another Tab"
+                            rounded="false"
+                            />
+                    </items>
+                </ext-tabPanel>
+            </items>
+        </ext-window>
+    </body>
+</html>

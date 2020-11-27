@@ -1,0 +1,92 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.viewport.basic.built_in_markup.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Viewport with BorderLayout - Ext.NET Examples
+        </title>
+    </head>
+    <body>
+        <ext-viewport layout="Border">
+            <items>
+                <ext-panel
+                    title="North"
+                    region="North"
+                    rounded="false"
+                    x:raw-split="true"
+                    height="180"
+                    bodyPadding="18"
+                    html="North"
+                    collapsible="true"
+                    />
+                <ext-panel
+                    title="West"
+                    region="West"
+                    rounded="false"
+                    layout="Accordion"
+                    width="270"
+                    minWidth="180"
+                    maxWidth="360"
+                    x:raw-split="true"
+                    collapsible="true">
+                    <items>
+                        <ext-panel title="Navigation" bodyPadding="18" html="West" />
+                        <ext-panel title="Settings" bodyPadding="18" html="Some settings in here" />
+                    </items>
+                </ext-panel>
+                <ext-tabPanel region="Center" rounded="false">
+                    <items>
+                        <ext-panel title="Center" bodyPadding="18" html="<h1>Viewport with BorderLayout</h1>" />
+                        <ext-panel
+                            title="Close Me"
+                            closable="true"
+                            bodyPadding="18"
+                            html="Closeable Tab"
+                            />
+                    </items>
+                </ext-tabPanel>
+                <ext-panel
+                    title="East"
+                    region="East"
+                    rounded="false"
+                    collapsible="true"
+                    x:raw-split="true"
+                    minWidth="180"
+                    width="270"
+                    layout="Fit">
+                    <items>
+                        <ext-tabPanel
+                            rounded="false"
+                            activeTab="1"
+                            tabPosition="Bottom"
+                           >
+                            <items>
+                                <ext-panel title="Tab 1" bodyPadding="18" html="East Tab 1"  />
+                                <ext-panel
+                                    title="Tab 2"
+                                    closable="true"
+                                    bodyPadding="18"
+                                    html="East Tab 2"
+                                    />
+                            </items>
+                        </ext-tabPanel>
+                    </items>
+                </ext-panel>
+                <ext-panel
+                    title="South"
+                    region="South"
+                    rounded="false"
+                    x:raw-split="true"
+                    collapsible="true"
+                    height="180"
+                    bodyPadding="18"
+                    html="South"
+                    />
+            </items>
+        </ext-viewport>
+    </body>
+</html>

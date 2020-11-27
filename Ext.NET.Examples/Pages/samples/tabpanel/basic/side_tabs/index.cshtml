@@ -1,0 +1,130 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.tabpanel.basic.side_tabs.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Side Tabs - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+        <style>
+            .x-panel p {
+                margin: 0;
+            }
+            .tab-cont {
+                float: left;
+                margin: 0 15px 15px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>
+            Side Tabs
+        </h1>
+
+        <p>
+            Tab Panels can be configured with a TabPosition of <code>Right</code> to rotate the tab
+            bar clockwise, or <code>Left</code> to rotate the tab bar counter-clockwise.
+        </p>
+
+        <div id="left-tabs" class="tab-cont">
+            <h4>
+                Left-Aligned Tabs
+            </h4>
+
+            <ext-tabPanel tabPosition="Left" height="480" width="360">
+                <items>
+                    <ext-panel title="Tab 1" iconCls="x-md md-icon-apps" />
+                    <ext-panel title="Tab 2" closable="true" />
+                    <ext-panel title="Tab 3" />
+                    <ext-panel
+                        title="Disabled"
+                        iconCls="x-md md-icon-apps"
+                        closable="true"
+                        disabled="true"
+                        />
+                </items>
+            </ext-tabPanel>
+        </div>
+        <div id="right-tabs" class="tab-cont">
+            <h4>
+                Right-Aligned Tabs
+            </h4>
+
+            <ext-tabPanel tabPosition="Right" height="480" width="360">
+                <items>
+                    <ext-panel title="Tab 1" iconCls="x-md md-icon-apps" />
+                    <ext-panel title="Tab 2" closable="true" />
+                    <ext-panel title="Tab 3" />
+                    <ext-panel
+                        title="Disabled"
+                        iconCls="x-md md-icon-apps"
+                        closable="true"
+                        disabled="true"
+                        />
+                </items>
+            </ext-tabPanel>
+        </div>
+        <div class="x-clear">
+        </div>
+        <div id="right-scroll-tabs" class="tab-cont">
+            <h4>
+                Left-Aligned Tabs With Scrolling
+            </h4>
+
+            <ext-tabPanel tabPosition="Left" height="480" width="360">
+                <items>
+                    <ext-panel title="Tab 1" iconCls="x-md md-icon-apps" />
+                    <ext-panel title="Tab 2" closable="true" />
+                    <ext-panel title="Tab 3" />
+                    <ext-panel
+                        title="Disabled"
+                        iconCls="x-md md-icon-apps"
+                        closable="true"
+                        disabled="true"
+                        />
+                    <ext-panel title="Tab 4" iconCls="x-md md-icon-apps" />
+                    <ext-panel title="Tab 5" closable="true" />
+                    <ext-panel title="Tab 6" />
+                    <ext-panel
+                        title="Disabled"
+                        iconCls="x-md md-icon-apps"
+                        closable="true"
+                        disabled="true"
+                        />
+                </items>
+            </ext-tabPanel>
+        </div>
+        <div id="left-scroll-tabs" class="tab-cont">
+            <h4>
+                Right-Aligned Tabs With Scrolling
+            </h4>
+
+            <ext-tabPanel tabPosition="Right" height="480" width="360">
+                <items>
+                    <ext-panel title="Tab 1" iconCls="x-md md-icon-apps" />
+                    <ext-panel title="Tab 2" closable="true" />
+                    <ext-panel title="Tab 3" />
+                    <ext-panel
+                        title="Disabled"
+                        iconCls="x-md md-icon-apps"
+                        closable="true"
+                        disabled="true"
+                        />
+                    <ext-panel title="Tab 4" iconCls="x-md md-icon-apps" />
+                    <ext-panel title="Tab 5" closable="true" />
+                    <ext-panel title="Tab 6" />
+                    <ext-panel
+                        title="Disabled"
+                        iconCls="x-md md-icon-apps"
+                        closable="true"
+                        disabled="true"
+                        />
+                </items>
+            </ext-tabPanel>
+        </div>
+    </body>
+</html>

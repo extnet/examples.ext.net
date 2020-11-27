@@ -1,0 +1,43 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.kitchen_sink.forms.login.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Login Form - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <ext-viewport>
+            <layout>
+                <ext-vboxLayout align="Middle" pack="Center" />
+            </layout>
+            <items>
+                <ext-formPanel
+                    title="Login"
+                    width="480"
+                    frame="true"
+                    bodyPadding="18"
+                    x-defaultAnchor="100%">
+                    <items>
+                        <ext-textField allowBlank="false" fieldLabel="User ID" name="user" />
+                        <ext-textField
+                            allowBlank="false"
+                            fieldLabel="Password"
+                            name="pass"
+                            inputType="Password"
+                            />
+                        <ext-checkbox fieldLabel="Remember me" name="remember" />
+                    </items>
+                    <buttons>
+                        <ext-button text="Login" />
+                    </buttons>
+                </ext-formPanel>
+            </items>
+        </ext-viewport>
+    </body>
+</html>

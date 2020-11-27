@@ -1,0 +1,106 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.window.basic.show.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Show a Hidden Window - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>
+            Show a Hidden Window
+        </h1>
+
+        <p>
+            This sample demonstrates several client-side and server-side techniques for triggering
+            the <code>Window</code> to show if hidden.
+        </p>
+
+        <p>
+            Within server-side code, the <code>.Show()</code> Method should be used. Within
+            client-side code, the <code>.show()</code> function should be used.
+        </p>
+
+        <p>
+            A Window can be automatically shown on initial Page Load by setting
+            <code>autoShow="true"</code> on the <code>Window</code> component.
+        </p>
+
+        <h4>Trigger with Click Listener</h4>
+
+        <ext-button text="Click Listener">
+            <listeners>
+                <click handler="App.Window1.show()" />
+            </listeners>
+        </ext-button>
+
+        <h4>Trigger with onClientClick</h4>
+
+        <ext-button text="Click Listener" onClientClick="App.Window1.show()" />
+
+        <h4>Trigger with Click DirectEvent</h4>
+
+        <ext-button text="Click DirectEvent">
+            <directEvents>
+                <click pageHandler="Button2_Click" method="POST" />
+            </directEvents>
+        </ext-button>
+
+        <h4>Trigger with onDirectClick</h4>
+
+        <ext-button text="Click DirectEvent" onDirectClick="Button2_Click" />
+
+        <h4>HTML button with onclick</h4>
+
+        <p>
+            <button onclick="App.Window3.show();return false;">HTML button</button>
+        </p>
+
+        <ext-window
+            id="Window1"
+            title="Click Listener"
+            hidden="true"
+            width="360"
+            height="270"
+            x="275"
+            y="150"
+            />
+
+        <ext-window
+            id="Window2"
+            title="Click DirectEvent"
+            hidden="true"
+            width="360"
+            height="270"
+            x="300"
+            y="200"
+            />
+
+        <ext-window
+            id="Window3"
+            title="HTML button"
+            hidden="true"
+            width="360"
+            height="270"
+            x="325"
+            y="250"
+            />
+
+        <ext-window
+            id="Window4"
+            title="AutoShow on Page Load"
+            width="360"
+            height="270"
+            autoShow="true"
+            bodyPadding="18"
+            html=@("This Window is shown on initial page load by setting <code>autoShow=\"true\"</code>.")
+            x="325"
+            y="250"
+            />
+    </body>
+</html>

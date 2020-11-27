@@ -1,0 +1,56 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.kitchen_sink.tabpanels.basic_tabpanel.IndexModel
+@{
+    Layout = null;
+
+    var HTML_1 = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas gravida nibh, quis porttitor felis
+                    venenatis id. Nam sodales mollis quam eget venenatis. Aliquam metus lorem, tincidunt ut egestas imperdiet, convallis
+                    lacinia tortor. Mauris accumsan, nisl et sodales tristique, massa dui placerat erat, at venenatis tortor libero nec
+                    tortor. Pellentesque quis elit ac dolor commodo tincidunt. Curabitur lorem eros, tincidunt quis viverra id, lacinia
+                    sed nisl. Quisque viverra ante eu nisl consectetur hendrerit.";
+
+    var HTML_2 = @"<b>This tab is scrollable.</b><br /><br />
+                    Aenean sit amet quam ipsum. Nam aliquet ullamcorper lorem, vel commodo neque auctor quis. Vivamus ac purus in
+                    tortor tempor viverra eget a magna. Nunc accumsan dolor porta mauris consequat nec mollis felis mattis. Nunc ligula nisl,
+                    tempor ut pellentesque et, viverra eget tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sodales
+                    rhoncus massa, sed lobortis risus euismod at. Suspendisse dictum, lectus vitae aliquam egestas, quam diam consequat augue,
+                    non porta odio ante a dui. Vivamus lacus mi, ultrices sed feugiat elementum, ultrices et lectus. Donec aliquet hendrerit magna,
+                    in venenatis ante faucibus ut. Duis non neque magna. Quisque iaculis luctus nibh, id pellentesque lorem egestas non. Phasellus
+                    id risus eget felis auctor scelerisque. Fusce porttitor tortor eget magna pretium viverra. Sed tempor vulputate felis aliquam
+                    scelerisque. Quisque eget libero non lectus tempus varius eu a tortor.
+                    <br /><br />
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas gravida nibh, quis porttitor felis
+                    venenatis id. Nam sodales mollis quam eget venenatis. Aliquam metus lorem, tincidunt ut egestas imperdiet, convallis
+                    lacinia tortor. Mauris accumsan, nisl et sodales tristique, massa dui placerat erat, at venenatis tortor libero nec
+                    tortor. Pellentesque quis elit ac dolor commodo tincidunt. Curabitur lorem eros, tincidunt quis viverra id, lacinia
+                    sed nisl. Quisque viverra ante eu nisl consectetur hendrerit.";
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Plain TabPanel - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <ext-viewport>
+            <layout>
+                <ext-vboxLayout align="Middle" pack="Center" />
+            </layout>
+            <items>
+                <ext-tabPanel width="480" height="360">
+                    <defaults>
+                        <ext-add key="bodyPadding" value="18" mode="Raw" />
+                        <ext-add key="scrollable" value="both" />
+                    </defaults>
+                    <items>
+                        <ext-panel title="Active Tab" html=@HTML_1 />
+                        <ext-panel title="Inactive Tab" html=@HTML_2 />
+                        <ext-panel title="Disabled Tab" disabled="true" />
+                    </items>
+                </ext-tabPanel>
+            </items>
+        </ext-viewport>
+    </body>
+</html>

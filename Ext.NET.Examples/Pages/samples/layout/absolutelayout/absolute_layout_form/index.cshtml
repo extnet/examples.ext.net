@@ -1,0 +1,57 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.layout.absolutelayout.absolute_layout_form.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Form with AbsoluteLayout - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <ext-viewport layout="Fit">
+            <items>
+                <ext-panel
+                    title="New Email"
+                    cls="email-form"
+                    frame="true"
+                    margin="18"
+                    bodyPadding="18"
+                    layout="Fit">
+                    <tbar>
+                        <ext-toolbar>
+                            <items>
+                                <ext-button text="Send" iconCls="x-md md-icon-email" />
+                                <ext-button text="Save" iconCls="x-md md-icon-save" />
+                                <ext-button text="Check Spelling" iconCls="x-md md-icon-spellcheck" />
+                                <ext-button text="Print" iconCls="x-md md-icon-print" />
+                                <ext-toolbarFill />
+                                <ext-button text="Attach a File" iconCls="x-md md-icon-attachment" />
+                            </items>
+                        </ext-toolbar>
+                    </tbar>
+                    <items>
+                        <ext-container layout="Absolute">
+                            <items>
+                                <ext-label text="From" x:raw-x="0" x:raw-y="0" />
+                                <ext-textField anchor="100%" x:raw-x="100" x:raw-y="0" />
+
+                                <ext-label text="To" x:raw-x="0" x:raw-y="60" />
+                                <ext-button text="Contacts..." x:raw-x="100" x:raw-y="62" />
+                                <ext-textField anchor="100%" x:raw-x="200" x:raw-y="60" />
+
+                                <ext-label text="Subject" x:raw-x="0" x:raw-y="120" />
+                                <ext-textField anchor="100%" x:raw-x="100" x:raw-y="120" />
+
+                                <ext-textArea anchor="100% 100%" x:raw-x="0" x:raw-y="180" emptyText="Message..." />
+                            </items>
+                        </ext-container>
+                    </items>
+                </ext-panel>
+            </items>
+        </ext-viewport>
+    </body>
+</html>

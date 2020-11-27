@@ -1,0 +1,111 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.events.directevents.duration_messages.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DirectEvent Duration Messages - Ext.NET Core Examples</title>
+</head>
+<body>
+    <h1>DirectEvent Duration Messages</h1>
+    <p>More information about this functionality you can find in <a href="https://forums.ext.net/showthread.php?35661" target="_blank">this Ext.NET forum thread</a>.</p>
+    <ext-resourcemanager >
+        <DirectEventDurationMessages>
+            <ext-durationMessage Duration="1000" Message="Global duration message for 1000 milliseconds" />
+            <ext-durationMessage Duration="3500" Message="Global duration message for 3500 milliseconds" />
+            <ext-durationMessage Duration="5000" Message="Global duration message for 5000 milliseconds" />
+        </DirectEventDurationMessages>
+        @*<Listeners>
+            <AjaxRequestComplete Handler="Ext.Msg.alert('Done', 'The operation has been completed.')" />
+        </Listeners>*@
+    </ext-resourcemanager>
+
+    <script type="text/javascript">
+        Ext.onReady(function () {
+            // The block below replaces the AjaxRequestComplete ResourceManager Listener commented out above.
+            Ext.net.DirectEvent.on({
+                ajaxrequestcomplete: {
+                    fn: function (response, result, el, eventType, action, extraParams, o) {
+                        Ext.Msg.alert('Done', 'The operation has been completed.')
+                    }
+                }
+            });
+        })
+    </script>
+
+    <ext-container Layout="VBox">
+        <defaults>
+            <ext-add key="margin" value="0 0 7 0" mode="Value" />
+        </defaults>
+        <items>
+            <ext-container Layout="HBox">
+                <items>
+                    <ext-button Text="Run" Width="75">
+                        <DirectEvents>
+                            <Click pageHandler="DoSomething" method="POST" type="Load">
+                                <EventMask>
+                                    <ext-eventMask>
+                                        <DurationMessages>
+                                            <ext-durationMessage Duration="1000" Message="Hm... taking a bit longer than expected..." />
+                                            <ext-durationMessage Duration="3500" Message="Well, this is a bit unexpected... almost there now..." />
+                                            <ext-durationMessage Duration="5000" Message="Woah, this is embarrassing. The server is taking really long. Sorry about this... still waiting..." />
+                                        </DurationMessages>
+                                    </ext-eventMask>
+                                </EventMask>
+                            </Click>
+                        </DirectEvents>
+                    </ext-button>
+                    <ext-label minWidth="450" html="&nbsp;- a long running DirectEvent with specific duration messages" />
+                </items>
+            </ext-container>
+            <ext-container Layout="HBox">
+                <items>
+                    <ext-button Text="Run" Width="75">
+                        <directEvents>
+                            <click pageHandler="DoSomething" method="POST" />
+                        </directEvents>
+                    </ext-button>
+                    <ext-label minWidth="450" html="&nbsp;- a long running DirectEvent with global duration messages" />
+                </items>
+            </ext-container>
+            <ext-container Layout="HBox">
+                <items>
+                    <ext-button Text="Run" Width="75">
+                        <Listeners>
+                            <Click Handler="App.direct.SomeDirectMethod({
+                                                eventMask: {
+                                                    durationMessages: [{
+                                                        duration: 1000,
+                                                        message: 'DirectMethod duration message for 1000 milliseconds'
+                                                    }, {
+                                                        duration: 3000,
+                                                        message: 'DirectMethod duration message for 3000 milliseconds'
+                                                    }]
+                                                }
+                                            });" />
+                        </Listeners>
+                    </ext-button>
+                    <ext-label minWidth="450" html="&nbsp;- a long running DirectMethod with specific duration messages" />
+                </items>
+            </ext-container>
+            <ext-container Layout="HBox">
+                <items>
+                    <ext-button Text="Forbid" Width="75">
+                        <Listeners>
+                            <Click Handler="Ext.net.DirectEvent.forbidDurationMessages = !Ext.net.DirectEvent.forbidDurationMessages;
+                                            var text = Ext.net.DirectEvent.forbidDurationMessages ? 'Allow' : 'Forbid';
+                                            this.setText(text);
+                                            App.Label1.setHtml('&nbsp;- ' + text + ' duration messages');" />
+                        </Listeners>
+                    </ext-button>
+                    <ext-label ID="Label1" minWidth="450" html="&nbsp;- Forbid duration messages" />
+                </items>
+            </ext-container>
+        </items>
+    </ext-container>
+</body>
+</html>

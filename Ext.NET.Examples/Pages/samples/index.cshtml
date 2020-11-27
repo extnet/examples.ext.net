@@ -1,0 +1,31 @@
+﻿@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.IndexModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>index</title>
+</head>
+<body>
+    <h1>Examples directory.</h1>
+    <br />
+    <ol>
+        @if (Model.Examples.Count < 1)
+        {
+            <li>No examples available.</li>
+        }
+        else
+        {
+            foreach (var example in Model.Examples)
+            {
+                <li><a href="@example">@example</a></li>
+            }
+        }
+    </ol>
+</body>
+</html>
