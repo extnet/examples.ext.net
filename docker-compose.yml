@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  ext.net.examples:
+    image: ${DOCKER_REGISTRY-}extnetexamples
+    build:
+      context: .
+      dockerfile: Ext.NET.Examples/Dockerfile
