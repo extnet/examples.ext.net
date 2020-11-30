@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 
 using Ext.Net;
@@ -34,7 +34,7 @@ namespace Ext.Net.Examples.Pages.samples.buttons.basic.variations_viewComponents
                     Build = btn =>
                     {
                         btn.IconCls = "x-md md-icon-check-circle-outline";
-                        btn.IconAlign = "left";
+                        btn.IconAlign = Dock.Left;
                     }
                 },
                 new ButtonSectionBuilder
@@ -43,7 +43,7 @@ namespace Ext.Net.Examples.Pages.samples.buttons.basic.variations_viewComponents
                     Build = btn =>
                     {
                         btn.IconCls = "x-md md-icon-check-circle-outline";
-                        btn.IconAlign = "top";
+                        btn.IconAlign = Dock.Top;
                     }
                 },
                 new ButtonSectionBuilder
@@ -52,7 +52,7 @@ namespace Ext.Net.Examples.Pages.samples.buttons.basic.variations_viewComponents
                     Build = btn =>
                     {
                         btn.IconCls = "x-md md-icon-check-circle-outline";
-                        btn.IconAlign = "right";
+                        btn.IconAlign = Dock.Right;
                     }
                 },
                 new ButtonSectionBuilder
@@ -61,7 +61,7 @@ namespace Ext.Net.Examples.Pages.samples.buttons.basic.variations_viewComponents
                     Build = btn =>
                     {
                         btn.IconCls = "x-md md-icon-check-circle-outline";
-                        btn.IconAlign = "bottom";
+                        btn.IconAlign = Dock.Bottom;
                     }
                 }
             };
