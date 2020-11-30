@@ -17,7 +17,7 @@ namespace Ext.Net.Examples.Pages.samples.layout.borderlayout.complex_in_codebehi
             {
                 Title = "West",
                 Region = RegionType.West,
-                UI = UI.Light,
+                Variant = Variant.Light,
                 Width = 270,
                 MaxWidth = 360,
                 Rounded = false,
@@ -85,7 +85,7 @@ namespace Ext.Net.Examples.Pages.samples.layout.borderlayout.complex_in_codebehi
             {
                 Title = "East",
                 Region = RegionType.East,
-                UI = UI.Light,
+                Variant = Variant.Light,
                 Width = 270,
                 MinWidth = 180,
                 Rounded = false,
@@ -133,7 +133,7 @@ namespace Ext.Net.Examples.Pages.samples.layout.borderlayout.complex_in_codebehi
             Panel south = new Panel
             {
                 Title = "South",
-                UI = UI.Light,
+                Variant = Variant.Light,
                 Rounded = false,
                 Height = 180,
                 BodyPadding = 18,

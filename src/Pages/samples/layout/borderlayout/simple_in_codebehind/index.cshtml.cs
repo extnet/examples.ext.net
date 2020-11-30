@@ -50,7 +50,7 @@ namespace Ext.Net.Examples.Pages.samples.layout.borderlayout.simple_in_codebehin
                     {
                         Id = "Panel1",
                         Title = "Navigation",
-                        UI = UI.Light,
+                        Variant = Variant.Light,
                         Width = 270,
                         Region = RegionType.West,
                         CustomConfig = new JsObject
