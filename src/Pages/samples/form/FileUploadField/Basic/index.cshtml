@@ -2,39 +2,6 @@
 @model Ext.Net.Examples.Pages.samples.form.fileuploadfield.basic.IndexModel
 @{
     Layout = null;
-
-    var uploadDirectEventsBlock = @"{
-        click: {
-            fn: function(item, e) {
-                Ext.net.directRequest({
-                    before: function(el, type, action, extraParams, o) {
-                        if (!App.BasicForm.getForm().isValid()) {
-                            return false;
-                        }
-                        this.waitWnd = Ext.Msg.wait('Uploading your photo...', 'Uploading');
-                    },
-                    formId: 'fileUpload',
-                    cleanRequest: true,
-                    failure: function(response, result, el, type, action, extraParams, o) {
-                        Ext.Msg.show({
-                            title: 'Error',
-                            msg: 'Error during upload',
-                            minWidth: 200,
-                            modal: true,
-                            anchor: 'BasicForm',
-                            icon: Ext.Msg.ERROR,
-                            buttons: Ext.Msg.OK
-                        });
-                    },
-                    method: 'POST',
-                    success: function(response, result, el, type, action, extraParams, o) {
-                        this.waitWnd.close()
-                    },
-                    url: '" + Url.Page("Index") + @"/UploadClick'
-                });
-            }
-        }
-    }";
 }
 
 <!DOCTYPE html>
@@ -84,8 +51,9 @@
 
         <p>
             A typical file upload field with Ext style. Direct editing of the text field cannot be done in a
-                        consistent, cross-browser way, so it is always read-only in this implementation.
+            consistent, cross-browser way, so it is always read-only in this implementation.
         </p>
+
         <ext-fileUploadField id="BasicField" width="480">
             <buttonConfig>
                 <ext-fileButton iconCls="x-md md-icon-attach-file" />
@@ -103,15 +71,7 @@
 
         <p>
             You can also render the file input as a button without the text field, with access to the field's value via the
-            standard
-            <tt>
-                TextField
-            </tt>
-             interface or by handling the 
-            <tt>
-                FileSelected
-            </tt>
-             event (as in this example).
+            standard <tt>TextField</tt> interface or by handling the <tt>FileSelected</tt> event (as in this example).
         </p>
         <ext-fileUploadField buttonOnly="true">
             <listeners>
@@ -162,9 +122,29 @@
                 </listeners>
                 <buttons>
                     <ext-button id="SaveButton" text="Save" disabled="true">
-                        <customConfig>
-                            <ext-add key="directEvents" value="@uploadDirectEventsBlock" mode="Raw" />
-                        </customConfig>
+                        <directEvents>
+                            <click cleanRequest="true"
+                                x-formId="fileUpload"
+                                url="@Url.Page("Index", "UploadClick")"
+                                method="POST"
+                                before="
+                                    if (!App.BasicForm.getForm().isValid()) {
+                                        return false;
+                                    }
+                                    this.waitWnd = Ext.Msg.wait('Uploading your photo...', 'Uploading');"
+                                failure="
+                                   Ext.Msg.show({
+                                        title: 'Error',
+                                        msg: 'Error during upload',
+                                        minWidth: 200,
+                                        modal: true,
+                                        anchor: 'BasicForm',
+                                        icon: Ext.Msg.ERROR,
+                                        buttons: Ext.Msg.OK
+                                    });"
+                                success="this.waitWnd.close()"
+                                />
+                        </directEvents>
                     </ext-button>
                     <ext-button text="Reset">
                         <listeners>
