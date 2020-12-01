@@ -33,7 +33,7 @@ var checkProvidedUrl = function () {
             }
         }
     }
-}
+};
 
 // Examples URL tracking (end)
 
@@ -45,7 +45,7 @@ var handleDirectLinkClick = function (button) {
     } else {
         Ext.toast("Error locating example URL.");
     }
-}
+};
 
 var handleReloadClick = function (button) {
     var panel = button.up('panel');
@@ -55,7 +55,7 @@ var handleReloadClick = function (button) {
     } else {
         Ext.toast("Error fetching example loader subsystem.");
     }
-}
+};
 
 var handleSourceViewClick = function (button) {
     var sourcesPane = App.SourceWindowTabPanel,
@@ -100,7 +100,7 @@ var handleTreeClick = function (tree, node) {
     } else {
         node.expand();
     }
-}
+};
 
 var filterTree = {
     filter: function (textField, newVal, oldVal) {
@@ -169,7 +169,7 @@ var filterTree = {
             return new RegExp(pattern, "i");
         }
     }
-}
+};
 
 var loadExample = function (record) {
     var examplesPane = App.ExamplesPane,
@@ -237,7 +237,7 @@ var loadExample = function (record) {
     } else {
         examplesPane.setActiveTab(existingTab);
     }
-}
+};
 
 var selectExampleInTree = function (node) {
     var tree = App.TreePanel,
@@ -261,7 +261,7 @@ var selectExampleInTree = function (node) {
     }
 
     delayedScrollIntoView(view, node);
-}
+};
 
 var switchTab = function (el, tab) {
     var node;
@@ -275,13 +275,14 @@ var switchTab = function (el, tab) {
             selectExampleInTree(node);
         }
     }
-}
+};
+
 var toggleRightNavMenu = function () {
     App.RightNavMenu[App.RightNavMenu.isHidden() ? "show" : "hide"]();
-}
+};
 
 var toggleArchiveList = function (me, event) {
     event.preventDefault();
     Ext.get(me).toggleCls("expanded");
     Ext.get("archives").toggleCls("expanded");
-}
+};
