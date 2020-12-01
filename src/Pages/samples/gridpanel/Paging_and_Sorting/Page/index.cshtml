@@ -32,6 +32,7 @@
                 color : #385F95;
                 white-space : normal;
             }
+
             .x-grid-rowbody p {
                 margin : 5px 5px 10px 5px !important;
                 width : 99%;
@@ -51,19 +52,12 @@
         <h1>Grid Panel with remote Paging and Sorting</h1>
 
         <p>The grid below pulls every displayed page from the server.</p>
+
         <p>When sorting, it requests the page again so the server can provide the correct page contents given that sorting order.</p>
 
-        <ext-gridPanel
-            id="GridPanel1"
-            title="Plants"
-            frame="true"
-            height="524">
+        <ext-gridPanel title="Plants" frame="true">
             <store>
-                <ext-store
-                    id="Store1"
-                    remoteSort="true"
-                    pageSize="3"
-                    autoLoad="true">
+                <ext-store remoteSort="true" pageSize="5" autoLoad="true">
                     <proxy>
                         <ext-ajaxProxy url="Page/ReadData">
                             <reader>
@@ -101,7 +95,11 @@
             <viewConfig>
                 <ext-tableView>
                     <customConfig>
-                        <ext-add key="getRowClass" value="function(record, index, rowParams, store) { return 'x-grid-row-expanded'; }" mode="Raw" />
+                        <ext-add
+                            key="getRowClass"
+                            value="function(record, index, rowParams, store) { return 'x-grid-row-expanded'; }"
+                            mode="Raw"
+                            />
                     </customConfig>
                     <selectionModel>
                         <ext-rowSelectionModel mode="MULTI" />
