@@ -1,0 +1,63 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.gridpanel.paging_and_sorting.local_paging.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GridPanel with local paging - Ext.NET Examples</title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+
+        <script>
+            var template = '<span style="color:{0};">{1}</span>';
+            var change = function (value) {
+                return Ext.String.format(template, (value > 0) ? "green" : "red", value);
+            };
+            var pctChange = function (value) {
+                return Ext.String.format(template, (value > 0) ? "green" : "red", value + "%");
+            };
+        </script>
+    </head>
+    <body>
+        <h1>GridPanel with local paging</h1>
+
+        <p>This example demonstrates how to create a GridPanel from an Array of data object and use the PagingToolbar to provide local data paging.</p>
+
+        <ext-gridPanel title="Array Grid" width="960" frame="true">
+            <store>
+                <ext-store pageSize="10" data="Model.GridData">
+                    <model>
+                        <ext-model>
+                            <fields>
+                                <ext-dataField name="company" />
+                                <ext-dataField name="price" type="Float" />
+                                <ext-dataField name="change" type="Float" />
+                                <ext-dataField name="pctChange" type="Float" />
+                                <ext-dataField name="lastChange" type="Date" />
+                            </fields>
+                        </ext-model>
+                    </model>
+                    <proxy>
+                        <ext-memoryProxy enablePaging="true" />
+                    </proxy>
+                </ext-store>
+            </store>
+            <columns>
+                <ext-column text="Company" dataIndex="company" flex="1" />
+                <ext-column text="Price" dataIndex="price" renderer="Ext.util.Format.usMoney" />
+                <ext-column text="Change" dataIndex="change" renderer="change" />
+                <ext-column text="Change" dataIndex="pctChange" renderer="pctChange" />
+                <ext-dateColumn
+                    text="Last Updated"
+                    width="140"
+                    dataIndex="lastChange"
+                    format="yyyy-MM-dd"
+                    />
+            </columns>
+            <bbar>
+                <ext-pagingToolbar />
+            </bbar>
+        </ext-gridPanel>
+    </body>
+</html>
