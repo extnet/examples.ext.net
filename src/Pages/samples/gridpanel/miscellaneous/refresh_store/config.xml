@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<example>
+    <description>
+        <![CDATA[Demonstrates how to refresh grid data dynamically]]>
+    </description>
+  <tags>grid,dynamic,refresh,store,data,direct</tags>
+</example>

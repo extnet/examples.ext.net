@@ -1,0 +1,74 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.gridpanel.miscellaneous.refresh_store.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Refresh Grid Store with Direct Event - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+        <script>
+            var template = '<span style="color:{0};">{1}</span>';
+
+            var change = function (value) {
+                return Ext.String.format(template, (value > 0) ? "green" : "red", value);
+            };
+
+            var pctChange = function (value) {
+                return Ext.String.format(template, (value > 0) ? "green" : "red", value + "%");
+            };
+        </script>
+    </head>
+    <body>
+        <h1>
+            Refresh Grid Store with Direct Event
+        </h1>
+
+        <!-- Configure a Store -->
+        <ext-store data="Model.GridData" storeId="companyStore2">
+            <fields>
+                <ext-dataField name="company" />
+                <ext-numberDataField name="price" />
+                <ext-numberDataField name="change" />
+                <ext-numberDataField name="pctChange" />
+                <ext-dateDataField name="lastChange" dateFormat="yyyy-MM-dd hh:mm:ss" />
+            </fields>
+        </ext-store>
+
+        <!-- Configure a GridPanel and reference the Store above -->
+        <ext-gridPanel
+            title="Array Grid"
+            width="960"
+            height="640"
+            frame="true"
+            store="companyStore2">
+            <columns>
+                <ext-column text="Company" dataIndex="company" flex="1" />
+                <ext-column text="Price" dataIndex="price" renderer="Ext.util.Format.usMoney" />
+                <ext-column text="Change" dataIndex="change" renderer="change" />
+                <ext-column text="Change %" dataIndex="pctChange" renderer="pctChange" />
+                <ext-dateColumn
+                    text="Last Updated"
+                    dataIndex="lastChange"
+                    width="140"
+                    format="hh:mm:ss"
+                    />
+            </columns>
+            <bbar>
+                <ext-toolbar>
+                    <items>
+                        <ext-button text="Print" iconCls="x-md md-icon-print" handler="this.up('grid').print();" />
+                        <ext-button text="Reload Data">
+                            <directEvents>
+                                <click pageHandler="RefreshGrid" success="App.companyStore2.setData(Ext.decode(response.responseText).result)" method="POST" />
+                            </directEvents>
+                        </ext-button>
+                    </items>
+                </ext-toolbar>
+            </bbar>
+        </ext-gridPanel>
+    </body>
+</html>

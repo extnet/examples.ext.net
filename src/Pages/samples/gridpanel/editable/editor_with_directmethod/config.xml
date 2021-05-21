@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<example>
+    <description>
+        <![CDATA[GridPanel with inline editing and saving record to DirectMethod]]>
+    </description>
+  <tags>grid,editable,direct method</tags>
+</example>

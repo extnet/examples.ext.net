@@ -1,0 +1,100 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.gridpanel.editable.editor_with_directmethod.IndexModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Editor with DirectMethod - Ext.NET Examples</title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+        <script>
+            var template = 'color:{0};';
+            var change = function (value, meta) {
+                meta.style = Ext.String.format(template, (value > 0) ? "green" : "red");
+                return value;
+            };
+            var pctChange = function (value, meta) {
+                meta.style = Ext.String.format(template, (value > 0) ? "green" : "red");
+                return value + "%";
+            };
+            var edit = function (editor, e) {
+                /*
+                    "e" is an edit event with the following properties:
+                        grid - The grid
+                        record - The record that was edited
+                        field - The field name that was edited
+                        value - The value being set
+                        originalValue - The original value for the field, before the edit.
+                        row - The grid table row
+                        column - The grid Column defining the column that was edited.
+                        rowIdx - The row index that was edited
+                        colIdx - The column index that was edited
+                */
+                // Call DirectMethod
+                if (!(e.value === e.originalValue || (Ext.isDate(e.value) && Ext.Date.isEqual(e.value, e.originalValue)))) {
+                    App.direct.Edit(e.record.data.id, e.field, e.originalValue, e.value);
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <h1>
+            Editable GridPanel With Save To [DirectMethod]
+        </h1>
+        <ext-gridPanel
+            id="GridPanel1"
+            title="Editable GridPanel"
+            width="800"
+            height="480">
+            <store>
+                <ext-store id="Store1" data="Model.GridData">
+                    <model>
+                        <ext-model idProperty="ID">
+                            <fields>
+                                <ext-dataField name="id" type="Int" />
+                                <ext-dataField name="name" />
+                                <ext-dataField name="price" type="Float" />
+                                <ext-dataField name="change" type="Float" />
+                                <ext-dataField name="pctChange" type="Float" />
+                                <ext-dataField name="lastChange" type="Date" />
+                            </fields>
+                        </ext-model>
+                    </model>
+                </ext-store>
+            </store>
+            <columns>
+                <ext-column text="ID" dataIndex="id" width="50" />
+                <ext-column text="Name" dataIndex="name" flex="1" editorModel="new TextField()">
+                </ext-column>
+                <ext-column text="Price" dataIndex="price" renderer="Ext.util.Format.usMoney" editorModel="new NumberField()">
+                </ext-column>
+                <ext-column text="Change" dataIndex="change" renderer="change" editorModel="new NumberField()">
+                </ext-column>
+                <ext-column text="Change" dataIndex="pctChange" renderer="pctChange" editorModel="new NumberField()">
+                </ext-column>
+                <ext-dateColumn
+                    text="Last Updated"
+                    dataIndex="lastChange"
+                    format="yyyy-MM-dd"
+                    width="125" editorModel='new Ext.Net.DateField() { Format = "yyyy-MM-dd" }'>
+                </ext-dateColumn>
+            </columns>
+            <viewConfig>
+                <ext-tableView>
+                    <selectionModel>
+                        <ext-cellSelectionModel />
+                    </selectionModel>
+                </ext-tableView>
+            </viewConfig>
+            <plugins>
+                <ext-cellEditingPlugin>
+                    <listeners>
+                        <edit fn="edit" />
+                    </listeners>
+                </ext-cellEditingPlugin>
+            </plugins>
+        </ext-gridPanel>
+    </body>
+</html>
