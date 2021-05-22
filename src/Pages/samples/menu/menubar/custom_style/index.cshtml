@@ -1,0 +1,66 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.menu.menubar.custom_style.IndexModel
+@{ Layout = null; }
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Basic Menu Bar with custom styling - Ext.NET Examples
+    </title>
+    <link href="/resources/css/examples.css" rel="stylesheet" />
+</head>
+<body>
+    <style type="text/css">
+        /* Match the font size */
+        .x-menu-item-text-default-menubar, .x-menu-item-text-default {
+            font-size: 16px
+        }
+
+        /* Match the menuitem hover effect*/
+        .x-menu-item-default-menubar.x-menu-item-active, .x-menu-item-default-menubar.x-menu-item-focus {
+            background-color: transparent
+        }
+
+            .x-menu-item-default-menubar.x-menu-item-active a > span, .x-menu-item-default-menubar.x-menu-item-focus a > span {
+                background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiA0Ij4KICA8cGF0aCBkPSJNMCAwSDMyVjRIMFoiIGZpbGw9IiNlMWVkZmYiLz4KPC9zdmc+") bottom center no-repeat;
+                background-size: 32px 4px;
+                bottom: -1rem;
+                height: 45px
+            }
+
+        /* Match the menu expander icon */
+        .x-menu-item-arrow-default-menubar:before {
+            content: "_";
+            background: url("data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNDI4NGZiIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyIDE2Yy0uMjYgMC0uNTEtLjEtLjcxLS4yOWwtNi02QS45OTYuOTk2IDAgMTE2LjcgOC4zbDUuMyA1LjI5IDUuMjktNS4yOWEuOTk2Ljk5NiAwIDExMS40MSAxLjQxbC02IDZjLS4xOS4xOS0uNDQuMjktLjcuMjl6Ij48L3BhdGg+PHBhdGggZmlsbD0ibm9uZSIgZD0iTTAgMGgyNHYyNEgweiI+PC9wYXRoPjwvc3ZnPg==") center center no-repeat;
+            background-size: 16px 16px
+        }
+    </style>
+    <ext-menuBar>
+        <items>
+            <ext-menuItem text="Download" />
+            <ext-menuItem text="Pricing" />
+            <ext-menuItem text="Support">
+                <menu>
+                    <ext-menu>
+                        <items>
+                            <ext-menuItem text="Examples Explorer" />
+                            <ext-menuItem text="Forums" />
+                            <ext-menuItem text="Docs" />
+                            <ext-menuItem text="FAQ" />
+                            <ext-menuItem text="GitHub Issues" />
+                            <ext-menuSeparator />
+                            <ext-menuItem text="Legacy WebForms Examples" />
+                            <ext-menuItem text="Legacy MVC Examples" />
+                            <ext-menuSeparator />
+                            <ext-menuItem text="Identity Guidelines" />
+                            <ext-menuItem text="Contact" />
+                        </items>
+                    </ext-menu>
+                </menu>
+            </ext-menuItem>
+            <ext-menuItem text="Blog" />
+            <ext-menuItem text="Themes" />
+        </items>
+    </ext-menuBar>
+</body>
+</html>

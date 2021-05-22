@@ -1,0 +1,43 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.menu.menubar.basic.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Basic Menu Bar - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <ext-menuBar>
+            <items>
+                <ext-menuItem text="Download" />
+                <ext-menuItem text="Pricing" />
+                <ext-menuItem text="Support">
+                    <menu>
+                        <ext-menu>
+                            <items>
+                                <ext-menuItem text="Examples Explorer" />
+                                <ext-menuItem text="Forums" />
+                                <ext-menuItem text="Docs" />
+                                <ext-menuItem text="FAQ" />
+                                <ext-menuItem text="GitHub Issues" />
+                                <ext-menuSeparator />
+                                <ext-menuItem text="Legacy WebForms Examples" />
+                                <ext-menuItem text="Legacy MVC Examples" />
+                                <ext-menuSeparator />
+                                <ext-menuItem text="Identity Guidelines" />
+                                <ext-menuItem text="Contact" />
+                            </items>
+                        </ext-menu>
+                    </menu>
+                </ext-menuItem>
+                <ext-menuItem text="Blog" />
+                <ext-menuItem text="Themes" />
+            </items>
+        </ext-menuBar>
+    </body>
+</html>
