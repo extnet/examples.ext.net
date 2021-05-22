@@ -1,0 +1,41 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.layout.accordion.menu_in_accordion.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Menus Within Accordion Panels - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>
+            Menus Within Accordion Panels
+        </h1>
+
+        <ext-container layout="HBox">
+            <items>
+                <ext-panel width="240"
+                    scrollable="true"
+                    title="Accordion Panel 1"
+                    frame="true"
+                    layout="Accordion">
+                    <items>
+                        @{
+                            foreach (var item in Model.Menus)
+                            {
+                                var panelTitle = item.Title;
+                                item.Title = null;
+                                <ext-panel title="@panelTitle" x-xtype="netmenupanel" x:model-menu="item" />
+                            }
+                        }
+                    </items>
+                </ext-panel>
+                <ext-panel model="Model.AccordionPanel" />
+            </items>
+        </ext-container>
+    </body>
+</html>
