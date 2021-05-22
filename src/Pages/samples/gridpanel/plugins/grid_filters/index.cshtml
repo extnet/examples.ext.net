@@ -1,0 +1,111 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.gridpanel.plugins.grid_filters.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Grid Filters plugin - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+        <script>
+            var template = '<span style="color:{0};">{1}</span>';
+
+            var change = function (value) {
+                return Ext.String.format(template, (value > 0) ? "green" : "red", value);
+            };
+
+            var pctChange = function (value) {
+                return Ext.String.format(template, (value > 0) ? "green" : "red", value + "%");
+            };
+        </script>
+    </head>
+    <body>
+        <h1>
+            Grid Filters Plugin
+        </h1>
+
+        <p>
+            Apply filters to the grid below by expanding any columns' dropdown menu and setting
+            the "Filters" menu entry.
+        </p>
+
+        <ext-gridPanel title="Filterable Grid"
+            width="960"
+            height="640"
+            frame="true"
+            store="companyStore2">
+            <plugins>
+                <ext-gridFilters />
+            </plugins>
+            <columns>
+                <ext-column text="Company" dataIndex="company" flex="1">
+                    <customConfig>
+                        <ext-add key="filter">
+                            <ext-add key="type" value="string" />
+                        </ext-add>
+                    </customConfig>
+                </ext-column>
+                <ext-column text="Price" dataIndex="price" renderer="Ext.util.Format.usMoney">
+                    <customConfig>
+                        <ext-add key="filter">
+                            <ext-add key="type" value="number" />
+                        </ext-add>
+                    </customConfig>
+                </ext-column>
+                <ext-column text="Change" dataIndex="change" renderer="change">
+                    <customConfig>
+                        <ext-add key="filter">
+                            <ext-add key="type" value="number" />
+                        </ext-add>
+                    </customConfig>
+                </ext-column>
+                <ext-column text="Change %" dataIndex="pctChange" renderer="pctChange">
+                    <customConfig>
+                        <ext-add key="filter">
+                            <ext-add key="type" value="list" />
+                            <ext-add key="options" value="[1.01, 1.02, 1.28, 1.39, 2.4]" mode="Raw" />
+                        </ext-add>
+                    </customConfig>
+                </ext-column>
+                <ext-dateColumn text="Last Updated"
+                    dataIndex="lastChange"
+                    width="140"
+                    format="yyyy-MM-dd">
+                    <customConfig>
+                        <ext-add key="filter">
+                            <ext-add key="type" value="date" />
+                            <ext-add key="dateFormat" value="n/j/Y" />
+                            <ext-add key="pickerDefaults">
+                                <ext-add key="ariaTitleDateFormat" value="F d" />
+                                <ext-add key="format" value="n/j/Y" />
+                                <ext-add key="longDayFormat" value="l, F j, Y" />
+                                <ext-add key="todayText" value="Now" />
+                            </ext-add>
+                        </ext-add>
+                    </customConfig>
+                </ext-dateColumn>
+            </columns>
+            <store>
+                <ext-store data="Model.GridData" storeId="companyStore2">
+                    <fields>
+                        <ext-dataField name="company" />
+                        <ext-numberDataField name="price" />
+                        <ext-numberDataField name="change" />
+                        <ext-numberDataField name="pctChange" />
+                        <ext-dateDataField name="lastChange" dateFormat="yyyy-MM-dd hh:mm:tt" />
+                    </fields>
+                </ext-store>
+            </store>
+            <bbar>
+                <ext-toolbar>
+                    <items>
+                        <ext-button text="Print" iconCls="x-md md-icon-print" handler="this.up('grid').print();" />
+                    </items>
+                </ext-toolbar>
+            </bbar>
+        </ext-gridPanel>
+    </body>
+</html>

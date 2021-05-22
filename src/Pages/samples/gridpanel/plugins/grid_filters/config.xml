@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<example>
+    <description>
+        <![CDATA[Demonstrates how to use the GridFilters plug in with a grid panel]]>
+    </description>
+  <tags>plugin,gridfilters,filter,grid</tags>
+</example>
