@@ -1,0 +1,91 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.gridpanel.selection_models.checkbox_selection.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            GridPanel with Checkbox Selection Model - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+        <script>
+            var template = '<span style="color:{0};">{1}</span>';
+
+            var change = function (value) {
+                return Ext.String.format(template, (value > 0) ? "#20c020" : "red", value);
+            };
+
+            var pctChange = function (value) {
+                return Ext.String.format(template, (value > 0) ? "#20c020" : "red", value + "%");
+            };
+
+            var getSelectedIds = function () {
+                var selectedIds = [];
+
+                App.GridPanel1.getSelection().forEach(function (entry) {
+                    selectedIds.push(entry.get("id"));
+                });
+
+                return selectedIds;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>
+            GridPanel with Checkbox Selection Model
+        </h1>
+
+        <ext-gridPanel
+            id="GridPanel1"
+            title="Company List"
+            width="800"
+            height="500">
+            <store>
+                <ext-store data="Model.GridData" storeId="Store1">
+                    <model>
+                        <ext-model idProperty="id">
+                            <fields>
+                                <ext-numberDataField name="id" />
+                                <ext-dataField name="name" />
+                                <ext-numberDataField name="price" />
+                                <ext-numberDataField name="change" />
+                                <ext-numberDataField name="pctChange" />
+                            </fields>
+                        </ext-model>
+                    </model>
+                </ext-store>
+            </store>
+            <columns>
+                <ext-column text="Company" dataIndex="name" flex="1" />
+                <ext-column text="Price" dataIndex="price" renderer="Ext.util.Format.usMoney" />
+                <ext-column text="Change" dataIndex="change" renderer="change" />
+                <ext-column text="Change %" dataIndex="pctChange" renderer="pctChange" />
+            </columns>
+            <bbar>
+                <ext-toolbar>
+                    <items>
+                        <ext-button id="Button1" text="Submit Selected Records" x-standOut="true">
+                            <directEvents>
+                                <click pageHandler="Button1_Click" method="POST">
+                                    <eventMask>
+                                        <ext-eventMask showMask="true" />
+                                    </eventMask>
+                                    <extraParams>
+                                        <ext-add key="selectionJson" value="function() { return getSelectedIds(); }" mode="Raw" />
+                                    </extraParams>
+                                </click>
+                            </directEvents>
+                        </ext-button>
+                    </items>
+                </ext-toolbar>
+            </bbar>
+            <selModel>
+                <ext-checkboxSelectionModel mode="MULTI" />
+            </selModel>
+        </ext-gridPanel>
+
+        <ext-label id="Label1" />
+    </body>
+</html>

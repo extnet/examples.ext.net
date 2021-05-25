@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<example>
+    <description>
+        <![CDATA[Demonstrates how to use the Checkbox Selection Model with Grid Panels]]>
+    </description>
+  <tags>selection, selection model, checkbox, checkboxSelectionModel, selModel, submit, direct</tags>
+</example>
