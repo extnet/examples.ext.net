@@ -1,0 +1,98 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.loaders.basic.markup.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Panel Loader in Markup - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+        <script type="text/javascript">
+            function dataTemplate() {
+                return Ext.create("Ext.net.XTemplate", {
+                    html: [
+                        '<div style="padding: 20px">',
+                        '<b>Generated:</b> {LastUpdate}',
+                        '<tpl for=\'Cast\'>',
+                        '<p>{FirstName} - {LastName}</p>',
+                        '</tpl>',
+                        '</div>'
+                    ]
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <h2>1. Component</h2>
+
+        <ext-panel
+            id="ComponentPanel"
+            width="400"
+            height="300"
+            title="Component Loader"
+            frame="true"
+            padding="20">
+            <tbarItems>
+                <ext-button text="Reload" handler="this.up('panel').getLoader().load()" />
+            </tbarItems>
+            <loader>
+                <ext-componentLoader url="markup/component" renderer="component" />
+            </loader>
+        </ext-panel>
+
+        <h2>2. Frame</h2>
+
+        <ext-panel
+            id="FramePanel"
+            width="400"
+            height="300"
+            title="Frame Loader"
+            frame="true">
+            <tbarItems>
+                <ext-button text="Reload" handler="this.up('panel').getLoader().load()" />
+            </tbarItems>
+            <loader>
+                <ext-componentLoader url="markup/panel_contents" renderer="frame" />
+            </loader>
+        </ext-panel>
+
+        <h2>3. HTML Content</h2>
+
+        <ext-panel
+            id="HTMLPanel"
+            width="400"
+            height="300"
+            title="HTML Loader"
+            frame="true"
+            padding="20">
+            <tbarItems>
+                <ext-button text="Reload" handler="this.up('panel').getLoader().load()" />
+            </tbarItems>
+            <loader>
+                <ext-componentLoader url="markup/HtmlContent" renderer="html" />
+            </loader>
+        </ext-panel>
+
+        <h2>4. JSON Data</h2>
+
+        <ext-panel
+            id="RawHTMLPanel"
+            width="400"
+            height="300"
+            title="JSON Data Loader"
+            frame="true"
+            scrollableAsString="vertical"
+            x:raw-tpl="dataTemplate()">
+            <tbarItems>
+                <ext-button text="Reload" handler="this.up('panel').getLoader().load()" />
+            </tbarItems>
+            <loader>
+                <ext-componentLoader url="markup/JsonContent" renderer="data" />
+            </loader>
+        </ext-panel>
+
+    </body>
+</html>

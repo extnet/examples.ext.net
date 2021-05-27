@@ -1,0 +1,21 @@
+@page
+@model Ext.Net.Examples.Pages.samples.loaders.basic.markup.panel_contentsModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Inner Panel</title>
+    <link href="/resources/css/examples.css" rel="stylesheet" />
+</head>
+<body>
+    <h3>Panel contents here.</h3>
+
+    <p>Page generated at @System.DateTime.Now.ToLongTimeString().</p>
+
+    <ext-button text="Inner Frame's button" handler="Ext.toast('Page was generated at @System.DateTime.Now.ToLongTimeString()');" />
+</body>
+</html>
