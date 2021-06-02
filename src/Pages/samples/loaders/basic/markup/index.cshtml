@@ -36,7 +36,8 @@
             frame="true"
             padding="20">
             <tbarItems>
-                <ext-button text="Reload" handler="this.up('panel').getLoader().load()" />
+                <ext-button text="Append" handler="this.up('panel').getLoader().load()" />
+                <ext-button text="Reload" handler="this.up('panel').removeAll();this.up('panel').getLoader().load()" />
             </tbarItems>
             <loader>
                 <ext-componentLoader url="markup/component" renderer="component" />
