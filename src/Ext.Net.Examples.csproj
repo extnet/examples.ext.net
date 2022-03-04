@@ -29,4 +29,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+
+  <Target Name="DeploySourceFiles" AfterTargets="Publish">
+    <ItemGroup>
+      <ASPNetPagesSourceFiles Include="Pages/**" />
+    </ItemGroup>
+    <Message Text="Deploying Pages/* files to: $(PublishDir)" Importance="High" />
+    <Copy SourceFiles="@(ASPNetPagesSourceFiles)" DestinationFolder="$(PublishDir)Pages/%(RecursiveDir)" />
+  </Target>
 </Project>

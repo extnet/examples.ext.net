@@ -1,0 +1,36 @@
+name: Publish Examples Explorer 7 to Heroku
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Set up SSH key
+        env:
+          HEROKU_SSH_PRIVATE_KEY: ${{ secrets.HEROKU_SSH_PRIVATE_KEY }}
+        run: |
+          if [ ! -d ~/.ssh ]; then mkdir ~/.ssh; fi
+          echo "${{ secrets.HEROKU_SSH_PRIVATE_KEY }}" > ~/.ssh/heroku_pkey
+          chmod go-rwx ~/.ssh/heroku_pkey
+          echo -e "Host heroku\n HostName heroku.com\n IdentityFile ~/.ssh/heroku_pkey\n IdentitiesOnly yes\n user git" > ~/.ssh/config
+
+      - name: Pull Heroku's SSH fingerprint
+        run: ssh-keyscan heroku.com >> ~/.ssh/known_hosts
+
+      - name: Set up Heroku repo
+        run: git remote add heroku ssh://heroku/ee7.git
+
+      - name: Push changes to Heroku
+        run: git push heroku HEAD --force
