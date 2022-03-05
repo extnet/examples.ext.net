@@ -107,9 +107,11 @@ namespace Ext.Net.Examples
                 cfg.UseThemeSpotless();
             });
 
+            // Must come before 'UseRouting()' or /favicon.ico would be unreachable.
+            app.UseStaticFiles();
+
             app.UseRouting();
 
-            app.UseStaticFiles();
             app.UseAuthorization();
 
             // 3. Enable Ext.NET localization [not required]
