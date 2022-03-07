@@ -124,6 +124,7 @@ namespace Ext.Net.Examples
             app.UseExtNet(config =>
             {
                 config.Theme = ThemeKind.Spotless;
+                config.DisableAntiforgery = true;
             });
 
             app.UseEndpoints(endpoints =>
