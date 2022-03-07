@@ -30,7 +30,7 @@ jobs:
         run: ssh-keyscan heroku.com >> ~/.ssh/known_hosts
 
       - name: Set up Heroku repo
-        run: git remote add heroku ssh://heroku/ee7.git
+        run: git remote add heroku ssh://heroku/examples7.git
 
       - name: Push changes to Heroku
         run: git push heroku HEAD --force
