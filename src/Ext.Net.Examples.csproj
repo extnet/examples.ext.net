@@ -24,12 +24,6 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="5.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="csrf.pfx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
   <Target Name="DeploySourceFiles" AfterTargets="Publish">
     <ItemGroup>
       <ASPNetPagesSourceFiles Include="Pages/**" />
