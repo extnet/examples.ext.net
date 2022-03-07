@@ -36,8 +36,6 @@ namespace Ext.Net.Examples
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            ConfigureDataProtection(services);
-
             services.Configure<GzipCompressionProviderOptions>(options =>
             {
                 options.Level = System.IO.Compression.CompressionLevel.Optimal;
@@ -124,42 +122,12 @@ namespace Ext.Net.Examples
             app.UseExtNet(config =>
             {
                 config.Theme = ThemeKind.Spotless;
-                config.DisableAntiforgery = true;
             });
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
             });
-        }
-
-        private void ConfigureDataProtection(IServiceCollection services)
-        {
-            var awsRegion = Environment.GetEnvironmentVariable("AWS_REGION");
-
-            var csrfCert = new X509Certificate2("csrf.pfx", "examples-csrf");
-
-            if (!string.IsNullOrEmpty(awsRegion))
-            {
-                var region = RegionEndpoint.GetBySystemName(awsRegion);
-                var s3 = new AmazonS3Client(region);
-
-                services.AddDataProtection()
-                    .SetApplicationName("Ext.NET Examples")
-                    .ProtectKeysWithCertificate(csrfCert)
-                    .PersistKeysToAwsS3(s3, new S3XmlRepositoryConfig
-                    {
-                        Bucket = "extnet-examples",
-                        KeyPrefix = "csrf-keys/",
-                    });
-            }
-            else
-            {
-                services.AddDataProtection()
-                    .SetApplicationName("Ext.NET Examples")
-                    .ProtectKeysWithCertificate(csrfCert)
-                    .PersistKeysToFileSystem(new DirectoryInfo("./csrf-keys"));
-            }
         }
     }
 }
