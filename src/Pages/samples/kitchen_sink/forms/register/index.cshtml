@@ -132,9 +132,13 @@
                                                     </fields>
                                                 </ext-model>
                                             </model>
-                                            @* <reader>
-                                                <ext-arrayReader />
-                                            </reader> *@
+                                            <proxy>
+                                                <ext-memoryProxy>
+                                                    <reader>
+                                                        <ext-arrayReader />
+                                                    </reader>
+                                                </ext-memoryProxy>
+                                            </proxy>
                                         </ext-store>
                                     </store>
                                 </ext-comboBox>

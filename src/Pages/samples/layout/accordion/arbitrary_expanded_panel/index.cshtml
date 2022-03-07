@@ -1,0 +1,63 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.layout.accordion.arbitrary_expanded_panel.IndexModel
+@{
+    Layout = null;
+}
+
+@functions {
+    private int currentPosition = 1;
+    private int expandedPanelPos = 2;
+
+    public bool collapsedPanel()
+    {
+        return currentPosition++ != expandedPanelPos;
+    }
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            AccordionLayout in Markup - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+        <p>
+            The accordion below will have the second panel initially expanded instead of the first one.
+        </p>
+        <p>
+            Notice the <code>collapsed</code> setting needs to be passed as <code>x:model-collapsed</code> to
+            emit the value to client script even if the default (<code>false</code>) is specified.
+        </p>
+    </head>
+    <body>
+        <h1>
+            Accordion Layout in Markup
+        </h1>
+        <ext-window
+            title="Accordion"
+            width="360"
+            height="600"
+            autoShow="true"
+            maximizable="true"
+            layout="Accordion">
+            <tbar>
+                <ext-toolbar>
+                    <items>
+                        <ext-button iconCls="x-md md-icon-add-circle-outline">
+                            <tooltip>
+                                <ext-quickTip title="Rich ToolTips" text="Let your users know what they can do!" />
+                            </tooltip>
+                        </ext-button>
+                        <ext-button iconCls="x-md md-icon-person-add" />
+                        <ext-button iconCls="x-md md-icon-person-remove" />
+                    </items>
+                </ext-toolbar>
+            </tbar>
+            <items>
+                <ext-panel title="Users" x:model-collapsed=@collapsedPanel() />
+                <ext-panel title="Settings" x:model-collapsed=@collapsedPanel() />
+                <ext-panel title="Security" x:model-collapsed=@collapsedPanel() />
+                <ext-panel title="Documents" x:model-collapsed=@collapsedPanel() />
+            </items>
+        </ext-window>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+@page "{handler?}"
+@model Ext.Net.Examples.Pages.samples.gridpanel.miscellaneous.reusable_config.IndexModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            Reusable GridPanel code - Ext.NET Examples
+        </title>
+        <link href="/resources/css/examples.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>
+            Reusable GridPanel code
+        </h1>
+
+        <p>
+            The below grid panel's model inherits from a base class that contains
+            logic to set up the grid with a store and direct events attached to it.
+            The events can be overridden where specific logic is needed.
+        </p>
+
+        <ext-gridPanel model="Model.ReusableGrid" id="GridPanel1" width="500" height="800">
+            <columns>
+                <ext-column dataIndex="id" text="Id" width="80" />
+                <ext-column dataIndex="name" text="Character" flex="1" />
+            </columns>
+        </ext-gridPanel>
+    </body>
+</html>
