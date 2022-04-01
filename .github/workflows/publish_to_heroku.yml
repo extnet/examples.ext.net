@@ -17,20 +17,16 @@ jobs:
           fetch-depth: 0
           ref: main
 
-      - name: Set up SSH key
-        env:
-          HEROKU_SSH_PRIVATE_KEY: ${{ secrets.HEROKU_SSH_PRIVATE_KEY }}
+      - name: Set up Heroku credentials
         run: |
-          if [ ! -d ~/.ssh ]; then mkdir ~/.ssh; fi
-          echo "${{ secrets.HEROKU_SSH_PRIVATE_KEY }}" > ~/.ssh/heroku_pkey
-          chmod go-rwx ~/.ssh/heroku_pkey
-          echo -e "Host heroku\n HostName heroku.com\n IdentityFile ~/.ssh/heroku_pkey\n IdentitiesOnly yes\n user git" > ~/.ssh/config
-
-      - name: Pull Heroku's SSH fingerprint
-        run: ssh-keyscan heroku.com >> ~/.ssh/known_hosts
+          for sdom in api git; do
+           echo "machine ${sdom}.heroku.com
+  login heroku@apikey.com
+  password ${{ secrets.HEROKU_API_KEY }}" >> ~/.netrc
+          done
 
       - name: Set up Heroku repo
-        run: git remote add heroku ssh://heroku/examples7.git
+        run: heroku git:remote --app examples7
 
       - name: Push changes to Heroku
         run: git push heroku HEAD --force
