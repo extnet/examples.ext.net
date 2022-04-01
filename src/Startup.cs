@@ -2,11 +2,6 @@ using System;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
 
-using Amazon;
-using Amazon.S3;
-
-using AspNetCore.DataProtection.Aws.S3;
-
 using Ext.Net.Core;
 
 using Microsoft.AspNetCore.Builder;
