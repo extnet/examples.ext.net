@@ -29,8 +29,8 @@ jobs:
         run: |
           for sdom in api git; do
            echo "machine ${sdom}.heroku.com
-  login heroku_token
-  password ${{ secrets.HEROKU_API_KEY }}" >> ~/.netrc
+            login heroku_token
+            password ${{ secrets.HEROKU_API_KEY }}" >> ~/.netrc
           done
 
       - name: Set up Heroku repo
