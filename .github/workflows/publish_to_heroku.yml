@@ -5,6 +5,14 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - '.github/**'
+      - '.gitignore'
+      - 'docker-compose.*'
+      - 'LICENSE'
+      - 'README'
+      - 'src/appsettings.Development.json'
+      - 'src/Dockerfile'
 
 jobs:
   build:
@@ -21,7 +29,7 @@ jobs:
         run: |
           for sdom in api git; do
            echo "machine ${sdom}.heroku.com
-  login heroku@apikey.com
+  login heroku_token
   password ${{ secrets.HEROKU_API_KEY }}" >> ~/.netrc
           done
 
