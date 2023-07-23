@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Ext.NET.Classic" Version="7.3.0" />
-    <PackageReference Include="Ext.NET.Classic.Charts" Version="7.3.0" />
+    <PackageReference Include="Ext.NET.Classic" Version="7.4.0" />
+    <PackageReference Include="Ext.NET.Classic.Charts" Version="7.4.0" />
     <PackageReference Include="Mojee" Version="1.3.0" />
   </ItemGroup>
 
